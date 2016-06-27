@@ -13,7 +13,11 @@ import {
   FaExclamationTriangle
 } from 'react-icons/lib/fa';
 
-export const fields = [ 'fullname', 'email', 'password' ];
+export const fields = [
+  'fullname',
+  'email',
+  'password'
+];
 
 class SignupForm extends Component {
   render() {
