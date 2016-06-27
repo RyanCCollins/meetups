@@ -9,6 +9,7 @@
   margin-bottom: auto;
 }
 
+
 .header {
   font-size: 32px;
   font: 'Open Sans';
@@ -27,4 +28,14 @@
 
 .buttonWrapper {
   margin-top: 200px;
+}
+
+.button {
+  color: white !important;
+  border: 2px solid white !important;
+}
+
+.button:hover {
+  color: rgba(0, 216, 255, .9) !important;
+  border: 2px solid rgba(0, 216, 255, .9) !important;
 }

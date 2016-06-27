@@ -6,12 +6,20 @@ import {
   Column
 } from 'react-foundation';
 import styles from './SignupPage.module.scss';
+import { SignupForm } from '../../containers';
+import { SectionHeader } from '../../components';
 
 class Signup extends Component {
   render() {
     return (
       <div className={styles.container}>
-
+        <SectionHeader
+          className={styles.blue}
+          header="Sign Up Now"
+        />
+        <SignupForm
+          {...this.props}
+        />
       </div>
     );
   }

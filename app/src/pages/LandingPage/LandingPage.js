@@ -10,7 +10,7 @@ import {
 import { SectionHeader } from '../../components';
 
 const LandingPage = (props) => (
-  <div className="gradient-green fill-screen">
+  <div className="gradient-purple fill-screen">
     <div className="container">
       <div className={styles.header}>
         <SectionHeader
@@ -21,7 +21,7 @@ const LandingPage = (props) => (
       <div className={styles.flexCenter}>
         <div className={styles.buttonWrapper}>
           <Link to="/signup">
-            <Button size={'large'} isHollow>
+            <Button size={'large'} isHollow className={styles.button}>
               GET STARTED
             </Button>
           </Link>

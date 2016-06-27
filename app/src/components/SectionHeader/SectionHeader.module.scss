@@ -1,4 +1,5 @@
 $light-grey: #a1a1a1;
+$primary-color: rgba(0, 216, 255, .9);
 
 .sectionHeader {
   font-size: 2.5rem;
@@ -9,6 +10,7 @@ $light-grey: #a1a1a1;
   letter-spacing: 1px;
   padding: 10px;
   padding-top: 100px;
+  color: white;
 }
 
 .sectionSubheader {
