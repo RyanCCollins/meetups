@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  width: 100%
+}
+
+.columnStyle {
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.header {
+  font-size: 32px;
+  font: 'Open Sans';
+}
+
+.flexCenter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  flex: 0 1 auto;
+}
+
+.buttonWrapper {
+  margin-top: 200px;
+}

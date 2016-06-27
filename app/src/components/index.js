@@ -3,9 +3,8 @@
 // Like so:
 // import * as Components from '../components';
 // import { MyComponent } from '../components';
-
-import AmazingComponent from './AmazingComponent/AmazingComponent';
+import SectionHeader from './SectionHeader/SectionHeader';
 
 export {
-  AmazingComponent
+  SectionHeader
 };
