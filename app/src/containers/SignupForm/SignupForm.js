@@ -5,6 +5,7 @@ import {
   Column
 } from 'react-foundation';
 import styles from './SignupForm.module.scss';
+import CSSModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
 import {
   FaCog,
@@ -13,6 +14,7 @@ import {
 } from 'react-icons/lib/fa';
 import validation from './signupValidation';
 import Popover from 'react-popover';
+import { Link } from 'react-router';
 
 export const fields = [
   'fullnameInput',
@@ -187,6 +189,17 @@ class SignupForm extends Component {
             </form>
           </Column>
         </Row>
+        <Row>
+          <Column isColumn large={4} small={12} centerOnSmall>
+            <div className={styles.linkWrapper}>
+              <p className={styles.linkText}>Already have an account?
+                <Link to="/login">
+                  {' Login'}
+                </Link>
+              </p>
+            </div>
+          </Column>
+        </Row>
       </div>
     );
   }
@@ -205,4 +218,4 @@ export default reduxForm({
   form: 'signupForm',
   fields,
   validate: validation
-})(SignupForm);
+})(CSSModules(SignupForm, styles));
