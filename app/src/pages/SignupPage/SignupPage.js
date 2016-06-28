@@ -4,7 +4,10 @@ import { bindActionCreators } from 'redux';
 import styles from './SignupPage.module.scss';
 import { SignupForm } from '../../containers';
 import { signupUser } from '../../actions/user';
-import { SectionHeader } from '../../components';
+import {
+  SectionHeader,
+  LoadingIndicator
+} from '../../components';
 
 class Signup extends Component {
   constructor(props) {
@@ -16,6 +19,7 @@ class Signup extends Component {
       isFetching,
       dispatch
     } = this.props;
+    console.log("Clicked submit")
     if (!isFetching) {
       return signupUser({
         fullname: formData.fullname,
@@ -26,17 +30,22 @@ class Signup extends Component {
     return dispatch({ type: 'DISPLAY_ERROR', error: 'Only one submission at a time.' });
   }
   render() {
+    const {
+      isFetching
+    } = this.props;
     return (
-      <div className={styles.container}>
-        <SectionHeader
-          className={styles.blue}
-          header="Sign Up Now"
-        />
-        <SignupForm
-          onSubmit={this.handleSubmit}
-          {...this.props}
-        />
-      </div>
+      <LoadingIndicator isLoading={isFetching}>
+        <div className={styles.container}>
+          <SectionHeader
+            className={styles.blue}
+            header="Sign Up Now"
+          />
+          <SignupForm
+            onSubmit={this.handleSubmit}
+            {...this.props}
+          />
+        </div>
+      </LoadingIndicator>
     );
   }
 }

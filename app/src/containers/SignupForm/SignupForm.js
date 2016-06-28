@@ -12,6 +12,7 @@ import {
   FaExclamationTriangle
 } from 'react-icons/lib/fa';
 import validation from './signupValidation';
+import Popover from 'react-popover';
 
 export const fields = [
   'fullname',
@@ -19,10 +20,35 @@ export const fields = [
   'password'
 ];
 
+const PasswordHint = () => (
+  <div className={styles.popoverBody}>
+    <strong>Password Must meet to following criteria:</strong>
+    <ul className="no-bullet">
+      <li className={styles.red}>Must be between 4 and 8 characters</li>
+      <li className={styles.red}>Must contain capital letters</li>
+    </ul>
+  </div>
+);
+
 class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.submitForm = this.submitForm.bind(this);
+    this.onHoverPassword = this.onHoverPassword.bind(this);
+    this.onLeavePassword = this.onLeavePassword.bind(this);
+    this.state = {
+      popoverOpen: false
+    };
+  }
+  onHoverPassword(e) {
+    this.setState({
+      popoverOpen: true
+    });
+  }
+  onLeavePassword() {
+    this.setState({
+      popoverOpen: false
+    });
   }
   submitForm(formData) {
     console.log(`Form data submit: ${formData}`)
@@ -35,6 +61,9 @@ class SignupForm extends Component {
       submitting,
       onSubmit
     } = this.props;
+    const {
+      popoverOpen
+    } = this.state;
     return (
       <div className={styles.container}>
         <Row>
@@ -46,7 +75,8 @@ class SignupForm extends Component {
             isColumn
             centerOnSmall
           >
-            <form onSubmit={() => handleSubmit(onSubmit)}>
+            <form
+              onSubmit={() => handleSubmit(onSubmit)}>
               <label>Fullname</label>
               <div>
                 <input
@@ -79,11 +109,16 @@ class SignupForm extends Component {
               </div>
               <div>
                 <label>Password</label>
+                <Popover isOpen={popoverOpen} preferPlace={'right'} body={<PasswordHint />}>
+                  <div></div>
+                </Popover>
                 <input
                   {...password}
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onMouseEnter={this.onHoverPassword}
+                  onMouseLeave={this.onLeavePassword}
                 ></input>
                 {password.touched &&
                   password.error &&
