@@ -6,6 +6,7 @@ const isIntegerRE = /^\+?(0|[1-9]\d*)$/
 const numberRE = /[0-9]/g
 const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/
 const lowercaseRE = /[a-z]/g
+const uppercaseRE = /[A-Z]/g
 const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 /**
@@ -77,11 +78,15 @@ export const containsLowercase = (value) => {
   return validateWithRE(lowercaseRE, 'Must contain at least one lowercase letter.')(value);
 };
 
+export const containsUppercase = (value) => {
+  return validateWithRE(uppercaseRE, 'Must contain at least one uppercase letter')(value);
+}
+
 export const containsTwoWords = (value) => {
   return validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(value);
 }
 
-export const validateEmail = (value) => {
+export const isEmail = (value) => {
   return validateWithRE(emailRE, 'Must be a valid email address.')(value);
 }
 
