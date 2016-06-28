@@ -86,14 +86,15 @@ class SignupForm extends Component {
             <form
               onSubmit={() => handleSubmit(onSubmit)}
             >
-              <label htmlFor="fullname">Full Name</label>
               <div>
+                <label htmlFor="fullnameInput">Full Name</label>
                 <input
                   {...fullnameInput}
                   type="text"
                   required
+                  className={fullnameInput.error ? 'error': ''}
                   aria-invalid={fullnameInput.error}
-                  id="fullname"
+                  id="fullnameInput"
                   name="name"
                   placeholder="Full Name"
                 ></input>
@@ -105,14 +106,16 @@ class SignupForm extends Component {
               }
               </div>
               <div>
-                <label>Email</label>
+                <label htmlFor="emailInput">Email</label>
                 <input
                   {...emailInput}
                   type="text"
+                  className={emailInput.error ? 'error': ''}
                   aria-invalid={emailInput.error}
                   aria-required
                   aria-describedby="emailInputError"
                   name="email"
+                  id="emailInput"
                   placeholder="Email Address"
                 ></input>
                 {emailInput.touched &&
@@ -125,7 +128,7 @@ class SignupForm extends Component {
                 }
               </div>
               <div>
-                <label>Password</label>
+                <label htmlFor="passwordInput">Password</label>
                 <Popover isOpen={popoverOpen} preferPlace={'right'} body={<PasswordHint />}>
                   <div></div>
                 </Popover>
@@ -133,6 +136,8 @@ class SignupForm extends Component {
                   {...passwordInput}
                   type="password"
                   name="password"
+                  className={passwordInput.error ? 'error': ''}
+                  id="passwordInput"
                   aria-invalid={passwordInput.error}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}
@@ -140,17 +145,18 @@ class SignupForm extends Component {
                 ></input>
                 {passwordInput.touched &&
                   passwordInput.error &&
-                  <span className="error">
+                  <small className="form-error">
                     {passwordInput.error}
-                  </span>
+                  </small>
                 }
               </div>
               <div>
-                <label>Password Confirmation</label>
+                <label htmlFor="passwordConfirmationInput">Password Confirmation</label>
                 <input
                   {...passwordConfirmationInput}
                   type="password"
                   aria-invalid={passwordConfirmationInput.error}
+                  className={passwordConfirmationInput.error ? 'error': ''}
                   id="passwordConfirmationInput"
                   name="passwordConfirmationInput"
                   placeholder="Password Confirmation"

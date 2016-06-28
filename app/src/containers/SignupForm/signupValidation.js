@@ -2,29 +2,36 @@ import * as validation from '../../utils/validator';
 import memoize from 'lru-memoize';
 
 // Compose validation functions for all input fields
-const password = [
+const passwordInput = [
   validation.containsLowercase,
   validation.containsUppercase,
   validation.minLength(8),
+  validation.maxLength(20),
   validation.containsNumber,
   validation.valueRequired
 ];
 
-const fullname = [
+const fullnameInput = [
   validation.containsTwoWords,
   validation.valueRequired
 ];
 
-const email = [
+const emailInput = [
   validation.isEmail,
   validation.valueRequired
 ];
 
+const passwordConfirmationInput = [
+  validation.valueRequired,
+  validation.matchValues(passwordInput)
+];
+
 // Create the validator
 const signupValidation = validation.createValidator({
-  password,
-  fullname,
-  email
+  passwordInput,
+  fullnameInput,
+  emailInput,
+  passwordConfirmationInput
 });
 
 /* Memoize and export */
