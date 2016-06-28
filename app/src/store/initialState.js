@@ -3,17 +3,26 @@ const initalState = {
   // Just add an array or object for each model.
   messages: {
     alertVisible: false,
-    user: []
+    user: [],
+    meetups: []
   },
   errors: {
-    user: []
+    user: [],
+    login: [],
+    signup: [],
+    meetups: []
   },
   user: {
-    auth: {},
-    data: {},
-    password: {},
-    uid: {},
-    isLoading: false
+    errors: [],
+    credentials: {},
+    authToken: null,
+    isAuthenticated: false,
+    isFetching: false,
+    signupData: {},
+    profileData: {
+      fullname: null,
+      email: null
+    }
   }
 };
 

@@ -1,24 +1,14 @@
-import {
-  DISPLAY_MESSAGE,
-  DISMISS_MESSAGE
-} from '../actions/actionCreators';
+import initialState from '../store/initialState';
+import * as T from '../constants/user';
 
-export default function posts(state = {
-  alertVisible: false,
-  myModel: []
-}, action) {
+const meetups = (state, action) => {
   switch (action.type) {
-    case DISPLAY_MESSAGE:
-      return Object.assign({}, state, {
-        alertVisible: true,
-        myModel: [...action.messages]
-      });
-    case DISMISS_MESSAGE:
-      return Object.assign({}, state, {
-        alertVisible: false,
-        messages: undefined
-      });
+    case T.DISPLAY_MESSAGE:
+      return [...action.messages];
+    case T.DISMISS_MESSAGE:
     default:
-      return state;
+      return state || initialState.messages.meetups;
   }
-}
+};
+
+export default meetups;

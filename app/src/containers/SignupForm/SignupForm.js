@@ -31,19 +31,18 @@ const validateFullname = (fullname) => {
 };
 
 const validateEmail = (email) => {
-  const emailREString = `/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|
-                         (\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]
-                         {1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;`;
+  const emailREString = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const emailRE = new RegExp(emailREString);
   return emailRE.test(email);
 };
 
 const validate = (values) => {
   const errors = {};
-  errors.fullname = validateFullname(values.fullname) ? null : 'Fullname required';
-  errors.password = validatePassword(values.password) ? null :
+  errors.fullname = validateFullname(values.fullname) ? '' : 'Fullname required';
+  errors.password = validatePassword(values.password) ? '' :
     'Password must contain at least: 1 digit, 1 lower, 1 upper and 8 characters total.';
-  errors.email = validateEmail(values.email) ? null : 'Please enter a valid email address.';
+  errors.email = validateEmail(values.email) ? '' : 'Please enter a valid email address.';
+  return errors;
 };
 
 class SignupForm extends Component {

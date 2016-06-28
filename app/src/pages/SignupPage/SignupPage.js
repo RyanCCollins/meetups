@@ -23,7 +23,7 @@ class Signup extends Component {
         password: formData.password
       }));
     }
-    return dispatch({ type: 'DISPLAY_ERROR ', error: 'Only one submission at a time.' });
+    return dispatch({ type: 'DISPLAY_ERROR', error: 'Only one submission at a time.' });
   }
   render() {
     return (
@@ -52,10 +52,10 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    onSubmitNewUser: submitSignup
-  }, dispatch);
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({
+//     onSubmitNewUser: submitSignup
+//   }, dispatch);
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps)(Signup);
