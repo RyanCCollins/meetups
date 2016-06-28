@@ -1,4 +1,3 @@
-import initialState from '../store/initialState';
 import * as T from '../constants/user';
 
 const user = (state = {
@@ -6,7 +5,7 @@ const user = (state = {
   isAuthenticated: false,
   authToken: null,
   signupData: {},
-  credentials: {}
+  profileData: {}
 }, action) => {
   switch (action.type) {
     case T.SIGNUP_INITIATION:
@@ -19,7 +18,8 @@ const user = (state = {
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        authToken: action.authToken
+        authToken: action.authToken,
+        profileData: action.userData
       });
     case T.SIGNUP_FAILURE:
       return Object.assign({}, state, {
