@@ -10,6 +10,13 @@ import { SignupForm } from '../../containers';
 import { SectionHeader } from '../../components';
 
 class Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(formData) {
+    console.log(`Handle submit: ${formData}`)
+  }
   render() {
     return (
       <div className={styles.container}>
@@ -18,6 +25,7 @@ class Signup extends Component {
           header="Sign Up Now"
         />
         <SignupForm
+          onSubmit={this.handleSubmit}
           {...this.props}
         />
       </div>
@@ -28,5 +36,9 @@ class Signup extends Component {
 Signup.propTypes = {
 
 };
+
+const mapStateToProps = (state) => ({
+
+})
 
 export default Signup;
