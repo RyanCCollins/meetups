@@ -14,10 +14,10 @@ class Signup extends Component {
     const {
       user,
       dispatch,
-      submitNewUser
+      onSubmitNewUser
     } = this.props;
     if (!user.isSubmitting) {
-      return dispatch(submitNewUser({
+      return dispatch(onSubmitNewUser({
         fullname: formData.fullname,
         email: formData.email,
         password: formData.password
