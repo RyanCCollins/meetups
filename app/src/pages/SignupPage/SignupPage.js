@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './SignupPage.module.scss';
 import { SignupForm } from '../../containers';
+import { signupUser } from '../../actions/user';
 import { SectionHeader } from '../../components';
 
 class Signup extends Component {
@@ -12,16 +13,15 @@ class Signup extends Component {
   }
   handleSubmit(formData) {
     const {
-      user,
-      dispatch,
-      onSubmitNewUser
+      isFetching,
+      dispatch
     } = this.props;
-    if (!user.isSubmitting) {
-      return dispatch(onSubmitNewUser({
+    if (!isFetching) {
+      return signupUser({
         fullname: formData.fullname,
         email: formData.email,
         password: formData.password
-      }));
+      });
     }
     return dispatch({ type: 'DISPLAY_ERROR', error: 'Only one submission at a time.' });
   }
@@ -42,20 +42,19 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  errors: PropTypes.array.isRequired,
-  user: PropTypes.object
+  dispatch: PropTypes.func,
+  errors: PropTypes.array,
+  isFetching: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.errors.user,
-  user: state.user
+  errors: state.user.errors,
+  isFetching: state.user.isFetching
 });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     onSubmitNewUser: submitSignup
-//   }, dispatch);
-// };
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({
+    signupUser
+  }, dispatch);
 
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

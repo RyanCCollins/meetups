@@ -9,6 +9,7 @@ const lowercaseRE = /[a-z]/g
 const uppercaseRE = /[A-Z]/g
 const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+
 /**
  * @function join
  * @description takes a collection of validation rules, joining into an array
@@ -42,37 +43,35 @@ const validateWithRE = (RE, message) =>
     if (!RE.test(value)) {
       return message;
     }
-  }
+  };
 
-export const minLength = (minimum) => {
-  return value => {
+export const minLength = (minimum) =>
+  (value) => {
     if (!noValue(value) && value.length < minimum) {
       return `Value must contain at least ${minimum} characters`;
     }
   };
-};
 
-export const maxLength = (maximum) => {
-  return value => {
+export const maxLength = (maximum) =>
+  (value) => {
     if (!noValue(value) && value.length > maximum) {
       return `Value must be no more than ${maximum} characters in length`;
     }
   };
-};
 
-export const valueRequired = (value) {
+export const valueRequired = (value) => {
   if (noValue(value)) {
     return 'Value Required';
   }
-}
+};
 
-export const isInteger = (value) {
+export const isInteger = (value) => {
   return validateWithRE(isIntegerRE, 'Must be an integer value.')(value);
-}
+};
 
 export const containsNumber = (value) => {
   return validateWithRE(numberRE, 'Must Contain at least one number')(value);
-}
+};
 
 export const containsLowercase = (value) => {
   return validateWithRE(lowercaseRE, 'Must contain at least one lowercase letter.')(value);
@@ -80,26 +79,25 @@ export const containsLowercase = (value) => {
 
 export const containsUppercase = (value) => {
   return validateWithRE(uppercaseRE, 'Must contain at least one uppercase letter')(value);
-}
+};
 
 export const containsTwoWords = (value) => {
   return validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(value);
-}
+};
 
 export const isEmail = (value) => {
   return validateWithRE(emailRE, 'Must be a valid email address.')(value);
-}
+};
 
-export const matchValues = (field) => {
-  return (value, data) => {
+export const matchValues = (field) =>
+  (value, data) => {
     if (data && value !== data[field]) {
       return 'Values do not match';
     }
-  }
-}
+  };
 
-export const createValidator = (validationRules) => {
-  return (data = {}) => {
+export const createValidator = (validationRules) =>
+  (data = {}) => {
     const errors = {};
     Object.keys(validationRules).forEach((key) => {
       const rule = join([].concat(validationRules[key]));
@@ -110,4 +108,3 @@ export const createValidator = (validationRules) => {
     });
     return errors;
   };
-};

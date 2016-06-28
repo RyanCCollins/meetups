@@ -7,7 +7,8 @@ import Main from './Main';
 // See: https://egghead.io/lessons/javascript-redux-generating-containers-with-connect-from-react-redux-visibletodolist
 const mapStateToProps = (state) => ({
   messages: state.messages,
-  errors: state.errors
+  errors: state.errors,
+  user: state.user
 });
 
 // Map the dispatch and bind the action creators.

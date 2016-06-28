@@ -4,7 +4,9 @@
 // import * as Components from '../components';
 // import { MyComponent } from '../components';
 import SectionHeader from './SectionHeader/SectionHeader';
+import LoadingIndicator from './LoadingIndicator/LoadingIndicator';
 
 export {
-  SectionHeader
+  SectionHeader,
+  LoadingIndicator
 };
