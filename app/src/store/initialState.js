@@ -12,7 +12,8 @@ const initalState = {
     auth: {},
     data: {},
     password: {},
-    uid: {}
+    uid: {},
+    isLoading: false
   }
 };
 

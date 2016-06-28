@@ -1,6 +1,12 @@
-import {
-  DISPLAY_ERROR
-} from '../actions/actionCreators';
+import * as T from '../constants/user';
+
+export default const signup = (state, action) => {
+  switch (action.type) {
+    case T.
+    default:
+
+  }
+}
 
 export default function posts(state = {
   myModel: []

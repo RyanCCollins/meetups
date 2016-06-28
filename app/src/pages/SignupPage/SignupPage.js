@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styles from './SignupPage.module.scss';
 import { SignupForm } from '../../containers';
 import { SectionHeader } from '../../components';
-import { submitNewUser } from 'actions/user';
 
 class Signup extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ class Signup extends Component {
   handleSubmit(formData) {
     const {
       user,
-      dispatch
+      dispatch,
+      submitNewUser
     } = this.props;
     if (!user.isSubmitting) {
       return dispatch(submitNewUser({
@@ -52,7 +53,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ submitNewUser }, dispatch);
+  return bindActionCreators({
+    onSubmitNewUser: submitSignup
+  }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
