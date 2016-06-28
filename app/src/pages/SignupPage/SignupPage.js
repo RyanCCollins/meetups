@@ -1,13 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import {
-  Button,
-  Row,
-  Column
-} from 'react-foundation';
+import { connect } from 'react-redux';
 import styles from './SignupPage.module.scss';
 import { SignupForm } from '../../containers';
 import { SectionHeader } from '../../components';
+import { submitNewUser } from 'actions/user';
 
 class Signup extends Component {
   constructor(props) {
@@ -15,7 +11,18 @@ class Signup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(formData) {
-    console.log(`Handle submit: ${formData}`)
+    const {
+      user,
+      dispatch
+    } = this.props;
+    if (!user.isSubmitting) {
+      return dispatch(submitNewUser({
+        fullname: formData.fullname,
+        email: formData.email,
+        password: formData.password
+      }));
+    }
+    return dispatch({ type: 'DISPLAY_ERROR ', error: 'Only one submission at a time.' });
   }
   render() {
     return (
@@ -34,11 +41,18 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-
+  dispatch: PropTypes.func.isRequired,
+  errors: PropTypes.array.isRequired,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
+  errors: state.errors.user,
+  user: state.user
+});
 
-})
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ submitNewUser }, dispatch);
+};
 
-export default Signup;
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
