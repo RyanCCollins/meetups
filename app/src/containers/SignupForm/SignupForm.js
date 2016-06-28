@@ -15,17 +15,20 @@ import validation from './signupValidation';
 import Popover from 'react-popover';
 
 export const fields = [
-  'fullname',
-  'email',
-  'password'
+  'fullnameInput',
+  'emailInput',
+  'passwordInput',
+  'passwordConfirmationInput'
 ];
 
 const PasswordHint = () => (
   <div className={styles.popoverBody}>
     <strong>Password Must meet to following criteria:</strong>
     <ul className="no-bullet">
-      <li className={styles.red}>Must be between 4 and 8 characters</li>
-      <li className={styles.red}>Must contain capital letters</li>
+      <li className={styles.red}>Must be at least 8 characters</li>
+      <li className={styles.red}>Must contain at least 1 uppercase letter</li>
+      <li className={styles.red}>Must contain at least 1 lowercase letter</li>
+      <li className={styles.red}>Must contain at least 1 number</li>
     </ul>
   </div>
 );
@@ -55,7 +58,12 @@ class SignupForm extends Component {
   }
   render() {
     const {
-      fields: { fullname, email, password },
+      fields: {
+        fullnameInput,
+        emailInput,
+        passwordInput,
+        passwordConfirmationInput
+      },
       resetForm,
       handleSubmit,
       submitting,
@@ -76,35 +84,44 @@ class SignupForm extends Component {
             centerOnSmall
           >
             <form
-              onSubmit={() => handleSubmit(onSubmit)}>
-              <label>Fullname</label>
+              onSubmit={() => handleSubmit(onSubmit)}
+            >
+              <label htmlFor="fullname">Full Name</label>
               <div>
                 <input
-                  {...fullname}
+                  {...fullnameInput}
                   type="text"
+                  required
+                  aria-invalid={fullnameInput.error}
+                  id="fullname"
                   name="name"
                   placeholder="Full Name"
                 ></input>
-              {fullname.touched &&
-                fullname.error &&
+              {fullnameInput.touched &&
+                fullnameInput.error &&
                   <span className="error">
-                    {fullname.error}
+                    {fullnameInput.error}
                   </span>
               }
               </div>
               <div>
                 <label>Email</label>
                 <input
-                  {...email}
+                  {...emailInput}
                   type="text"
+                  aria-invalid={emailInput.error}
+                  aria-required
+                  aria-describedby="emailInputError"
                   name="email"
                   placeholder="Email Address"
                 ></input>
-                {email.touched &&
-                  email.error &&
+                {emailInput.touched &&
+                  emailInput.error &&
+                  <div id="emailInputError">
                     <span className="error">
-                      {email.error}
+                      {emailInput.error}
                     </span>
+                  </div>
                 }
               </div>
               <div>
@@ -113,18 +130,36 @@ class SignupForm extends Component {
                   <div></div>
                 </Popover>
                 <input
-                  {...password}
+                  {...passwordInput}
                   type="password"
                   name="password"
+                  aria-invalid={passwordInput.error}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}
                   onMouseLeave={this.onLeavePassword}
                 ></input>
-                {password.touched &&
-                  password.error &&
-                    <span className="error">
-                      {password.error}
-                    </span>
+                {passwordInput.touched &&
+                  passwordInput.error &&
+                  <span className="error">
+                    {passwordInput.error}
+                  </span>
+                }
+              </div>
+              <div>
+                <label>Password Confirmation</label>
+                <input
+                  {...passwordConfirmationInput}
+                  type="password"
+                  aria-invalid={passwordConfirmationInput.error}
+                  id="passwordConfirmationInput"
+                  name="passwordConfirmationInput"
+                  placeholder="Password Confirmation"
+                ></input>
+                {passwordConfirmationInput.touched &&
+                  passwordConfirmationInput.error &&
+                  <span className="error">
+                    {passwordConfirmationInput.error}
+                  </span>
                 }
               </div>
               <div className={styles.buttonGroup}>
@@ -163,5 +198,5 @@ SignupForm.propTypes = {
 export default reduxForm({
   form: 'signupForm',
   fields,
-  validation
+  validate: validation
 })(SignupForm);

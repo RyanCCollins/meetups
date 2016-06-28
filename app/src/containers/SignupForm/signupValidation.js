@@ -5,7 +5,6 @@ import memoize from 'lru-memoize';
 const password = [
   validation.containsLowercase,
   validation.containsUppercase,
-  validation.containsTwoWords,
   validation.minLength(8),
   validation.containsNumber,
   validation.valueRequired
