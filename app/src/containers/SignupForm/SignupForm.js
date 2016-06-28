@@ -5,7 +5,7 @@ import {
   Column
 } from 'react-foundation';
 import styles from './SignupForm.module.scss';
-import { reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form';
 import {
   FaCog,
   FaPaperPlane,
@@ -19,7 +19,7 @@ export const fields = [
 ];
 
 const validatePassword = (password) => {
-  const passwordREString = "(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)";
+  const passwordREString = '(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)';
   const passwordRE = new RegExp(passwordREString);
   return passwordRE.test(password);
 };
@@ -27,21 +27,23 @@ const validatePassword = (password) => {
 const validateFullname = (fullname) => {
   const fullnameREString = "^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$";
   const fullnameRE = new RegExp(fullnameREString);
-  return fullnameRE.test(fullname)
+  return fullnameRE.test(fullname);
 };
 
 const validateEmail = (email) => {
-  const emailREString = `/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;`
+  const emailREString = `/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|
+                         (\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]
+                         {1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;`;
   const emailRE = new RegExp(emailREString);
   return emailRE.test(email);
 };
 
 const validate = (values) => {
   const errors = {};
-  errors.fullname = validateFullname(values.fullname) ? null : 'Fullname required'
+  errors.fullname = validateFullname(values.fullname) ? null : 'Fullname required';
   errors.password = validatePassword(values.password) ? null :
-    'Password must contain at least: 1 digit, 1 lower, 1 upper and 8 characters total.'
-  errors.email = validateEmail(values.email) ? null : 'Please enter a valid email address.'
+    'Password must contain at least: 1 digit, 1 lower, 1 upper and 8 characters total.';
+  errors.email = validateEmail(values.email) ? null : 'Please enter a valid email address.';
 };
 
 class SignupForm extends Component {
@@ -71,7 +73,7 @@ class SignupForm extends Component {
             isColumn
             centerOnSmall
           >
-            <form onSubmit={handleSubmit(this.onSubmit)}>
+            <form onSubmit={() => handleSubmit(onSubmit)}>
               <label>Fullname</label>
               <div>
                 <input

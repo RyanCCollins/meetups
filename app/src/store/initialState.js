@@ -3,10 +3,16 @@ const initalState = {
   // Just add an array or object for each model.
   messages: {
     alertVisible: false,
-    myModel: []
+    user: []
   },
   errors: {
-    myModel: []
+    user: []
+  },
+  user: {
+    auth: {},
+    data: {},
+    password: {},
+    uid: {}
   }
 };
 
