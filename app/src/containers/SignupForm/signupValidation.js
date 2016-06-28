@@ -1,4 +1,4 @@
-import * as validation from '/utils/validator';
+import * as validation from '../../utils/validator';
 import memoize from 'lru-memoize';
 
 // Compose validation functions for all input fields
