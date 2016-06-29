@@ -17,7 +17,8 @@ const NoMeetups = () => (
 );
 
 const MeetupList = ({
-  meetups
+  meetups,
+  onSubmitNewMeetup
 }) => (
   <Row>
     <Column large={6} small={10} isColumn centerOnSmall>
@@ -27,11 +28,9 @@ const MeetupList = ({
             <GoCalendar className={styles.iconStyle} />
           </span>
           <h4 className={styles.text}>No Meetups Yet...</h4>
-          <Link className={styles.buttonLink} to="/meetups/create">
-            <Button className={styles.button}>
-              Create One
-            </Button>
-          </Link>
+          <Button className={styles.button} onClick={onSubmitNewMeetup}>
+            Create One
+          </Button>
         </div>
       </Callout>
     </Column>
@@ -39,7 +38,8 @@ const MeetupList = ({
 );
 
 MeetupList.propTypes = {
-  meetups: PropTypes.array
+  meetups: PropTypes.array,
+  onSubmitNewMeetup: PropTypes.func.isRequired
 };
 
 export default cssModules(MeetupList, styles);

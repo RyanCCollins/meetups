@@ -1,5 +1,5 @@
 .container {
-
+  font-family: 'Open Sans';
 }
 
 .iconWrapper {
@@ -29,15 +29,13 @@ $gradient2: linear-gradient(45deg, #2ecc71, dodgerblue);
   background-image: $gradient2 !important;
   text-transform: uppercase;
   font-size: 1.8rem;
-  text-fill-color: transparent;
-  color: transparent;
   letter-spacing: 3px;
   padding: 10px;
   border: 4px solid transparent;
 
   &:hover {
-    border-image: $gradient2;
-    background: $gradient2;
+    border-image: $gradient;
+    background: $gradient;
   }
 }
 

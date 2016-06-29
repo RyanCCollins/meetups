@@ -1,0 +1,25 @@
+.modal {
+
+}
+
+.modalAnimationEnter {
+    opacity: 0.00;
+    transform: scale(0.7);
+    transition: all 0.2s;
+}
+
+.modalAnimationEnter.modalAnimationEnterActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modalAnimationLeave {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.modalAnimationLeaveActive {
+  opacity: 0.00;
+  transform: scale(0.7);
+}
