@@ -4,7 +4,7 @@
 
 const isIntegerRE = /^\+?(0|[1-9]\d*)$/;
 const numberRE = /^(?=.*[0-9]).+$/;
-const twoWordsRE = new RegExp("^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$");
+const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/;
 const lowercaseRE = /^(?=.*[a-z]).+$/;
 const uppercaseRE = /^(?=.*[A-Z]).+$/;
 const specialCharRE = /^(?=.*[_\W]).+$/;

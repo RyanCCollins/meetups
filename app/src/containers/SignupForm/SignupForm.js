@@ -125,7 +125,7 @@ class SignupForm extends Component {
                   name="password"
                   id="passwordInput"
                   className={inputHasError(passwordInput) &&'error'}
-                  aria-invalid={passwordInput.error}
+                  aria-invalid={passwordInput.error !== null}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}
                   onMouseLeave={this.onLeavePassword}

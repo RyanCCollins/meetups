@@ -19,7 +19,7 @@ const FormInputField = ({
       type={inputType || 'text'}
       required
       className={inputHasError(field) && 'error'}
-      aria-invalid={field.error}
+      aria-invalid={field.error !== null}
       id={field.name}
       name={field.name.replace('Input', '')}
       placeholder={labelText}
