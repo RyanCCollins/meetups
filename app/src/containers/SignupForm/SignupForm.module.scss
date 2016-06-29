@@ -17,7 +17,7 @@
 .popoverBody {
   padding: 2rem;
   background-color: white;
-  border: 2px solid goldenrod;
+  border: 4px solid black;
   border-radius: 4px;
   font-family: 'Open Sans';
 }
@@ -34,4 +34,8 @@
 .linkText {
   font-size: 1.3rem;
   font-family: 'Open Sans';
+}
+
+.buttonMarginLeft {
+  margin-left: 40px;
 }

@@ -6,16 +6,25 @@ const isHidingStyle = {
   display: 'none'
 };
 
+const isNotHidingStyle = {
+  display: ''
+};
+
 const LoadingIndicator = ({
   isLoading,
   children
 }) => (
   <div>
-    <div className={styles.fullScreenContainer} style={isLoading ? '' : isHidingStyle}>
-      <Spinner
-        className={styles.spinner}
-        spinnerName="three-bounce"
-      />
+    <div
+      className={styles.fullScreenContainer}
+      style={isLoading ? isNotHidingStyle : isHidingStyle}
+    >
+      <div className={styles.spinnerContainer}>
+        <Spinner
+          className={styles.spinner}
+          spinnerName="three-bounce"
+        />
+      </div>
     </div>
     {!isLoading && children}
   </div>

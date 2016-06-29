@@ -182,7 +182,13 @@ class SignupForm extends Component {
                     <FaPaperPlane />
                   }{' Submit'}
                 </Button>
-                <Button isHollow size={'large'} disabled={submitting} onClick={resetForm}>
+                <Button
+                  isHollow
+                  size={'large'}
+                  disabled={submitting}
+                  onClick={resetForm}
+                  className={styles.buttonMarginLeft}
+                >
                   Clear Form
                 </Button>
               </div>
