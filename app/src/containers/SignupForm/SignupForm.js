@@ -25,6 +25,9 @@ export const fields = [
 
 const PasswordHint = () => (
   <div className={styles.popoverBody}>
+    <div className={styles.popoverEmoji}>
+      👮
+    </div>
     <strong>Password Must meet to following criteria:</strong>
     <ul className="no-bullet">
       <li className={styles.red}>Must be at least 8 characters</li>
@@ -41,9 +44,16 @@ class SignupForm extends Component {
     this.submitForm = this.submitForm.bind(this);
     this.onHoverPassword = this.onHoverPassword.bind(this);
     this.onLeavePassword = this.onLeavePassword.bind(this);
+    this.onHoverLink = this.onHoverLink.bind(this);
     this.state = {
-      popoverOpen: false
+      popoverOpen: false,
+      isHovering: false
     };
+  }
+  onHoverLink() {
+    this.setState({
+      isHovering: !this.state.isHovering
+    });
   }
   onHoverPassword(e) {
     this.setState({
@@ -72,7 +82,8 @@ class SignupForm extends Component {
       onSubmit
     } = this.props;
     const {
-      popoverOpen
+      popoverOpen,
+      isHovering
     } = this.state;
     return (
       <div className={styles.container}>
@@ -196,11 +207,11 @@ class SignupForm extends Component {
           </Column>
         </Row>
         <Row>
-          <Column isColumn large={4} small={12} centerOnSmall>
+          <Column isColumn large={6} mediun={6} small={12} centerOnSmall>
             <div className={styles.linkWrapper}>
               <p className={styles.linkText}>Already have an account?
-                <Link to="/login">
-                  {' Login'}
+                <Link to="/login" onMouseEnter={this.onHoverLink}>
+                  {' Login'}{isHovering && ' 🤓'}
                 </Link>
               </p>
             </div>
