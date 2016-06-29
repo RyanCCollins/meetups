@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {
-  Button,
   Row,
   Column
 } from 'react-foundation';
@@ -8,17 +7,13 @@ import styles from './SignupForm.module.scss';
 import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
 import { toastr } from 'redux-toastr';
-import {
-  FaCog,
-  FaPaperPlane,
-  FaExclamationTriangle
-} from 'react-icons/lib/fa';
 import validation from './signupValidation';
 import Popover from 'react-popover';
 import {
   FormInputError,
   FormInputField,
-  FormFooter
+  FormFooter,
+  FormButtonGroup
 } from 'components';
 import { inputHasError } from 'utils/misc';
 
@@ -159,30 +154,7 @@ class SignupForm extends Component {
                 labelText="Password Confirmation"
                 inputType="password"
               />
-              <div className={styles.buttonGroup}>
-                <Button
-                  isExpanded
-                  className={styles.marginRight}
-                  size={'large'}
-                  disabled={submitting}
-                >
-                  {submitting ?
-                    <FaCog className="fa-spin" />
-                  :
-                    <FaPaperPlane />
-                  }{' Submit'}
-                </Button>
-                <Button
-                  isExpanded
-                  isHollow
-                  size={'large'}
-                  disabled={submitting}
-                  onClick={resetForm}
-                  className={styles.buttonMarginLeft}
-                >
-                  Clear Form
-                </Button>
-              </div>
+              <FormButtonGroup />
             </form>
           </Column>
         </Row>

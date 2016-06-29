@@ -1,13 +1,10 @@
 import React, { PropTypes } from 'react';
 import {
   Column,
-  Row,
-  Callout,
-  Button
+  Row
 } from 'react-foundation';
 import styles from './MeetupList.module.scss';
 import cssModules from 'react-css-modules';
-import { Link } from 'react-router';
 
 const MeetupList = ({
   meetups

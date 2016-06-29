@@ -8,10 +8,11 @@ import {
 import styles from './MeetupPanel.module.scss';
 import { GoCalendar } from 'react-icons/lib/go';
 import cssModules from 'react-css-modules';
-import { Link } from 'react-router';
+import MeetupList from 'components';
 
 const MeetupPanel = ({
-  onSubmitNewMeetup
+  onSubmitNewMeetup,
+  children
 }) => (
   <Row>
     <Column large={6} small={10} isColumn centerOnSmall>
@@ -25,6 +26,7 @@ const MeetupPanel = ({
             Create One
           </Button>
         </div>
+        {children}
       </Callout>
     </Column>
   </Row>
@@ -32,6 +34,7 @@ const MeetupPanel = ({
 
 MeetupPanel.propTypes = {
   meetups: PropTypes.array,
+  children: React.children,
   onSubmitNewMeetup: PropTypes.func.isRequired
 };
 

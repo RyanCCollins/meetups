@@ -12,6 +12,7 @@ import FormFooter from './FormFooter/FormFooter';
 import ErrorAlert from './ErrorAlert/ErrorAlert';
 import MeetupList from './MeetupList/MeetupList';
 import MeetupPanel from './MeetupPanel/MeetupPanel';
+import FormButtonGroup from './FormButtonGroup/FormButtonGroup';
 
 export {
   SectionHeader,
@@ -22,5 +23,6 @@ export {
   FormFooter,
   ErrorAlert,
   MeetupList,
-  MeetupPanel
+  MeetupPanel,
+  FormButtonGroup
 };

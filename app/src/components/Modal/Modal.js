@@ -12,3 +12,5 @@ const Modal = ({
     </div>
   </ReactCSSTransitionGroup>
 );
+
+export default Modal;

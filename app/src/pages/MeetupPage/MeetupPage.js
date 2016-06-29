@@ -5,13 +5,15 @@ import {
   SectionHeader,
   LoadingIndicator,
   BackButton,
-  MeetupPanel
+  MeetupPanel,
+  MeetupList
 } from '../../components';
 
 class MeetupPage extends Component {
   render() {
     const {
-      isFetching
+      isFetching,
+      meetups
     } = this.props;
     return (
       <LoadingIndicator isLoading={isFetching}>
@@ -20,7 +22,11 @@ class MeetupPage extends Component {
           <SectionHeader header="Meetups" />
           <MeetupPanel
             {...this.props}
-          />
+          >
+            <MeetupList
+              meetups={meetups || null}
+            />
+          </MeetupPanel>
         </div>
       </LoadingIndicator>
     );
@@ -28,7 +34,13 @@ class MeetupPage extends Component {
 }
 
 MeetupPage.propTypes = {
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  meetups: PropTypes.array.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+  meetups: state.meetups
+});
 
 export default cssModules(MeetupPage, styles);
