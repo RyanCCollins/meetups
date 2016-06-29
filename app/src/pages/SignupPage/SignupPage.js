@@ -21,14 +21,14 @@ class SignupPage extends Component {
       onSubmitForm,
       onError
     } = this.props;
-    if (false) {
+    if (!isFetching) {
       return onSubmitForm({
         fullname: params.fullname,
         email: params.email,
         password: params.password
       });
     }
-    return onError(['Only one submission at a time.']);
+    return onError('Only one submission at a time.');
   }
   render() {
     const {

@@ -1,5 +1,24 @@
 import * as T from '../constants/user';
 
+/* Failures */
+export const signupFailure = () => ({
+  type: T.SIGNUP_FAILED,
+  isFetching: false,
+  isAuthenticated: false
+});
+
+export const loginFailure = () => ({
+  type: T.LOGIN_FAILURE,
+  isFetching: false,
+  isAuthenticated: false
+});
+
+export const logoutFailure = () => ({
+  type: T.LOGOUT_FAILURE,
+  isFetching: false,
+  isAuthenticated: true
+});
+
 /* User signup */
 export const signupInitiation = (signupData) => ({
   type: T.SIGNUP_INITIATION,
@@ -39,9 +58,8 @@ export function signupUser(signupData) {
     fakeSignup(sigupData).then((userData) => {
       dispatch(signupSuccess(userData));
     }).catch((error) => {
-      const errors = [];
-      errors.push(error);
-      dispatch(signupFailure(errors));
+      dispatch({ type: 'DISPLAY_ERROR', error });
+      dispatch(signupFailure());
     });
   };
 }
@@ -82,9 +100,8 @@ export function loginUser(credentials) {
       localStorage.setItem('authToken', userData.authToken);
       dispatch(loginSuccess(userData));
     }).catch((error) => {
-      const errors = [];
-      errors.push(error);
-      dispatch(loginFailure(errors));
+      dispatch({ type: 'DISPLAY_ERROR', error });
+      dispatch(loginFailure());
     });
   };
 }
@@ -108,25 +125,3 @@ export function logoutUser() {
     dispatch(logoutSuccess());
   };
 }
-
-/* Errors */
-export const signupFailure = (errors) => ({
-  type: T.SIGNUP_FAILED,
-  isFetching: false,
-  isAuthenticated: false,
-  errors
-});
-
-export const loginFailure = (errors) => ({
-  type: T.LOGIN_FAILURE,
-  isFetching: false,
-  isAuthenticated: false,
-  errors
-});
-
-export const logoutFailure = (errors) => ({
-  type: T.LOGOUT_FAILURE,
-  isFetching: false,
-  isAuthenticated: true,
-  errors
-});

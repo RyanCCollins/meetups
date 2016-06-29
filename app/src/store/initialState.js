@@ -7,12 +7,7 @@ const initalState = {
     user: [],
     meetups: []
   },
-  errors: {
-    user: [],
-    login: [],
-    signup: [],
-    meetups: []
-  },
+  errors: [],
   user: {
     credentials: {},
     authToken: null,
