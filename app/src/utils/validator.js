@@ -2,11 +2,12 @@
  * https://github.com/rszczypka/swd-p1-meetup/blob/master/common/validation.js
  */
 
-const isIntegerRE = /^\+?(0|[1-9]\d*)$/
-const numberRE = /[0-9]/g
-const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/
-const lowercaseRE = /[a-z]/g
-const uppercaseRE = /[A-Z]/g
+const isIntegerRE = /^\+?(0|[1-9]\d*)$/;
+const numberRE = /^(?=.*[0-9]).+$/;
+const twoWordsRE = new RegExp("^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$");
+const lowercaseRE = /^(?=.*[a-z]).+$/;
+const uppercaseRE = /^(?=.*[A-Z]).+$/;
+const specialCharRE = /^(?=.*[0-9_\W]).+$/;
 const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
@@ -65,6 +66,9 @@ export const valueRequired = (value) => {
   }
 };
 
+export const containsSpecialChar = (value) =>
+  validateWithRE(specialCharRE, 'Must contain 1 special character.')(value);
+
 export const isInteger = (value) => {
   return validateWithRE(isIntegerRE, 'Must be an integer value.')(value);
 };
@@ -88,13 +92,6 @@ export const containsTwoWords = (value) => {
 export const isEmail = (value) => {
   return validateWithRE(emailRE, 'Must be a valid email address.')(value);
 };
-
-export const matchValues = (field) =>
-  (value, data) => {
-    if (data && value !== data[field]) {
-      return 'Values do not match';
-    }
-  };
 
 export const createValidator = (validationRules) =>
   (data = {}) => {

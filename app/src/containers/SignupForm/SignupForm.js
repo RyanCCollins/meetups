@@ -41,7 +41,6 @@ const PasswordHint = () => (
 class SignupForm extends Component {
   constructor(props) {
     super(props);
-    this.submitForm = this.submitForm.bind(this);
     this.onHoverPassword = this.onHoverPassword.bind(this);
     this.onLeavePassword = this.onLeavePassword.bind(this);
     this.onHoverLink = this.onHoverLink.bind(this);
@@ -65,9 +64,6 @@ class SignupForm extends Component {
       popoverOpen: false
     });
   }
-  submitForm(formData) {
-    console.log(`Form data submit: ${formData}`)
-  }
   render() {
     const {
       fields: {
@@ -78,8 +74,7 @@ class SignupForm extends Component {
       },
       resetForm,
       handleSubmit,
-      submitting,
-      onSubmit
+      submitting
     } = this.props;
     const {
       popoverOpen,
@@ -97,7 +92,7 @@ class SignupForm extends Component {
             centerOnSmall
           >
             <form
-              onSubmit={() => handleSubmit(onSubmit)}
+              onSubmit={handleSubmit}
             >
               <div>
                 <label htmlFor="fullnameInput">Full Name</label>
@@ -183,6 +178,7 @@ class SignupForm extends Component {
               </div>
               <div className={styles.buttonGroup}>
                 <Button
+                  isExpanded
                   className={styles.marginRight}
                   size={'large'}
                   disabled={submitting}
@@ -194,6 +190,7 @@ class SignupForm extends Component {
                   }{' Submit'}
                 </Button>
                 <Button
+                  isExpanded
                   isHollow
                   size={'large'}
                   disabled={submitting}
@@ -211,7 +208,7 @@ class SignupForm extends Component {
             <div className={styles.linkWrapper}>
               <p className={styles.linkText}>Already have an account?
                 <Link to="/login" onMouseEnter={this.onHoverLink}>
-                  {' Login'}{isHovering && ' 🤓'}
+                  {' Login'}{isHovering ? ' 🤓' : '!'}
                 </Link>
               </p>
             </div>
@@ -223,12 +220,10 @@ class SignupForm extends Component {
 }
 
 SignupForm.propTypes = {
-  asyncValidating: PropTypes.string.isRequired,
   fields: PropTypes.object.isRequired,
   resetForm: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  submitting: PropTypes.bool.isRequired
 };
 
 export default reduxForm({

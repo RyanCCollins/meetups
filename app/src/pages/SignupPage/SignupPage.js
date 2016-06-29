@@ -15,11 +15,11 @@ class Signup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(formData) {
+    console.log("clicked on submit")
     const {
       isFetching,
       dispatch
     } = this.props;
-    console.log("Clicked submit")
     if (!isFetching) {
       return signupUser({
         fullname: formData.fullname,
@@ -68,4 +68,5 @@ const mapDispatchToProps = (dispatch) =>
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(Signup);
+  mapDispatchToProps
+)(Signup);

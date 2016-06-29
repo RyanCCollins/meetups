@@ -8,7 +8,8 @@ const passwordInput = [
   validation.minLength(8),
   validation.maxLength(20),
   validation.containsNumber,
-  validation.valueRequired
+  validation.valueRequired,
+  validation.containsSpecialChar
 ];
 
 const fullnameInput = [
@@ -22,9 +23,9 @@ const emailInput = [
 ];
 
 const passwordConfirmationInput = [
-  validation.valueRequired,
-  validation.matchValues(passwordInput)
+  validation.valueRequired
 ];
+
 
 // Create the validator
 const signupValidation = validation.createValidator({
