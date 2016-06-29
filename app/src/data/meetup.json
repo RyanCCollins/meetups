@@ -1,0 +1,26 @@
+{
+  "meetups": [
+    {
+      "id": 1,
+      "key": "whatever",
+      "name": "Hacksmiths Launch Party",
+      "type": "",
+      "host": {},
+      "startDate": "2015-03-25T12:00:00",
+      "endDate": "2015-03-25T12:20:20",
+      "location": {
+        "lat": 18.344179271158357,
+        "long": -66.75267219543457
+      },
+      "guests": [
+
+      ]
+    }
+  ]
+}
+
+{
+  "eventTypes": [
+
+  ]
+}

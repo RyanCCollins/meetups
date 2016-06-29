@@ -5,6 +5,7 @@
 // import { MyComponent } from '../components';
 import SectionHeader from './SectionHeader/SectionHeader';
 import LoadingIndicator from './LoadingIndicator/LoadingIndicator';
+import BackButton from './BackButton/BackButton';
 
 export {
   SectionHeader,
