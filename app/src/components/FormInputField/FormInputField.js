@@ -10,9 +10,9 @@ const FormInputField = ({
   <div className="form-group">
     <label
       className={inputHasError(field) && 'error'}
-      htmlFor={field}
+      htmlFor={field.name}
     >
-      labelText
+      {labelText}
     </label>
     <input
       {...field}
@@ -20,8 +20,8 @@ const FormInputField = ({
       required
       className={inputHasError(field) && 'error'}
       aria-invalid={field.error}
-      id={field}
-      name={field.toString().replace('Input', '')}
+      id={field.name}
+      name={field.name.replace('Input', '')}
       placeholder={labelText}
     ></input>
     {inputHasError(field) &&
