@@ -86,7 +86,8 @@ export const containsUppercase = (value) => {
 };
 
 export const containsTwoWords = (value) => {
-  return validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(value);
+  const lowercaseValue = value ? value.toLowerCase() : '';
+  return validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(lowercaseValue);
 };
 
 export const isEmail = (value) => {

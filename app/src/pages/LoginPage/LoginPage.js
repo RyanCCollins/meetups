@@ -43,7 +43,8 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  errors: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({

@@ -24,8 +24,7 @@ const user = (state = {
     case T.SIGNUP_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        isAuthenticated: false,
-        errors: action.errors
+        isAuthenticated: false
       });
     case T.LOGIN_INITIATION:
       return Object.assign({}, state, {
@@ -42,8 +41,7 @@ const user = (state = {
     case T.LOGIN_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        isAuthenticated: false,
-        errors: action.errors
+        isAuthenticated: false
       });
     case T.LOGOUT_INITIATION:
       return Object.assign({}, state, {
@@ -55,8 +53,7 @@ const user = (state = {
     case T.LOGOUT_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        isAuthenticated: false,
-        errors: action.errors
+        isAuthenticated: false
       });
     default:
       return state;

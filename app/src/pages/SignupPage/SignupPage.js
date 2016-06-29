@@ -21,14 +21,14 @@ class SignupPage extends Component {
       onSubmitForm,
       onError
     } = this.props;
-    if (!isFetching) {
+    if (false) {
       return onSubmitForm({
         fullname: params.fullname,
         email: params.email,
         password: params.password
       });
     }
-    return onError('Only one submission at a time.');
+    return onError(['Only one submission at a time.']);
   }
   render() {
     const {
@@ -60,14 +60,14 @@ SignupPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.user.errors,
+  errors: state.errors.user,
   isFetching: state.user.isFetching
 });
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
     onSubmitForm: (params) => dispatch(signupUser(params)),
-    onError: (error) => dispatch({ type: 'DISPLAY_ERROR', error })
+    onErrors: (errors) => dispatch({ type: 'SIGNUP_FAILURE', errors })
   }, dispatch);
 
 const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(SignupPage);

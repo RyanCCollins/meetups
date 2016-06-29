@@ -14,7 +14,6 @@ const initalState = {
     meetups: []
   },
   user: {
-    errors: [],
     credentials: {},
     authToken: null,
     isAuthenticated: false,

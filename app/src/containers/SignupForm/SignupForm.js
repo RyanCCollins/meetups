@@ -5,7 +5,7 @@ import {
   Column
 } from 'react-foundation';
 import styles from './SignupForm.module.scss';
-import CSSModules from 'react-css-modules';
+import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
 import {
   FaCog,
@@ -14,7 +14,6 @@ import {
 } from 'react-icons/lib/fa';
 import validation from './signupValidation';
 import Popover from 'react-popover';
-import { Link } from 'react-router';
 import {
   FormInputError,
   FormInputField,
@@ -37,6 +36,7 @@ const PasswordHint = () => (
     <strong>Password Must meet to following criteria:</strong>
     <ul className="no-bullet">
       <li className={styles.red}>Must be at least 8 characters</li>
+      <li className={styles.red}>Must contain at least 1 special character</li>
       <li className={styles.red}>Must contain at least 1 uppercase letter</li>
       <li className={styles.red}>Must contain at least 1 lowercase letter</li>
       <li className={styles.red}>Must contain at least 1 number</li>
@@ -188,4 +188,4 @@ export default reduxForm({
   form: 'signupForm',
   fields,
   validate: validation
-})(CSSModules(SignupForm, styles));
+})(cssModules(SignupForm, styles));

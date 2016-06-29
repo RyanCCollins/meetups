@@ -16,13 +16,6 @@ export const signupSuccess = (userData) => ({
   profileData: userData
 });
 
-export const signupFailure = (errors) => ({
-  type: T.SIGNUP_FAILED,
-  isFetching: false,
-  isAuthenticated: false,
-  errors
-});
-
 const fakeOdds = () => {
   return Math.floor(Math.random() * (20 - 1)) + 1;
 };
@@ -69,13 +62,6 @@ export const loginSuccess = (userData) => ({
   profileData: userData
 });
 
-export const loginFailure = (errors) => ({
-  type: T.LOGIN_FAILURE,
-  isFetching: false,
-  isAuthenticated: false,
-  errors
-});
-
 const fakeLogin = (credentials) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -115,13 +101,6 @@ export const logoutSuccess = () => ({
   isAuthenticated: false
 });
 
-export const logoutFailure = (errors) => ({
-  type: T.LOGOUT_FAILURE,
-  isFetching: false,
-  isAuthenticated: true,
-  errors
-});
-
 export function logoutUser() {
   return dispatch => {
     dispatch(logoutInitiation());
@@ -129,3 +108,25 @@ export function logoutUser() {
     dispatch(logoutSuccess());
   };
 }
+
+/* Errors */
+export const signupFailure = (errors) => ({
+  type: T.SIGNUP_FAILED,
+  isFetching: false,
+  isAuthenticated: false,
+  errors
+});
+
+export const loginFailure = (errors) => ({
+  type: T.LOGIN_FAILURE,
+  isFetching: false,
+  isAuthenticated: false,
+  errors
+});
+
+export const logoutFailure = (errors) => ({
+  type: T.LOGOUT_FAILURE,
+  isFetching: false,
+  isAuthenticated: true,
+  errors
+});
