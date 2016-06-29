@@ -27,7 +27,7 @@ class MeetupPage extends Component {
   }
 }
 
-MeetupPage.PropTypes = {
+MeetupPage.propTypes = {
   isFetching: PropTypes.bool.isRequired
 };
 
