@@ -18,6 +18,7 @@ import { Link } from 'react-router';
 import {
   FormInputError
 } from 'components';
+import { inputHasError } from 'utils/misc';
 
 export const fields = [
   'fullnameInput',
@@ -25,15 +26,6 @@ export const fields = [
   'passwordInput',
   'passwordConfirmationInput'
 ];
-
-/**
- * @function inputHasError
- * @description determine if the given input has an error
- * @param {input} - the form input field to check for errors.
- * @return bool - whether the input has an error or not.
- */
-const inputHasError = (input) =>
-  input.touched && input.error
 
 const PasswordHint = () => (
   <div className={styles.popoverBody}>
@@ -117,6 +109,7 @@ class SignupForm extends Component {
                   {...fullnameInput}
                   type="text"
                   required
+                  className={inputHasError(fullnameInput) && 'error'}
                   aria-invalid={fullnameInput.error}
                   id="fullnameInput"
                   name="name"
@@ -135,6 +128,7 @@ class SignupForm extends Component {
                   {...emailInput}
                   type="text"
                   aria-invalid={emailInput.error}
+                  className={inputHasError(emailInput) && 'error'}
                   aria-required
                   aria-describedby="emailInputError"
                   name="email"
@@ -160,6 +154,7 @@ class SignupForm extends Component {
                   type="password"
                   name="password"
                   id="passwordInput"
+                  className={inputHasError(passwordInput) &&'error'}
                   aria-invalid={passwordInput.error}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}
