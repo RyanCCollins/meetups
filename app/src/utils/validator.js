@@ -67,31 +67,31 @@ export const valueRequired = (value) => {
 };
 
 export const containsSpecialChar = (value) =>
-  validateWithRE(specialCharRE, 'Must contain 1 special character.')(value);
+  value && validateWithRE(specialCharRE, 'Must contain 1 special character.')(value);
 
 export const isInteger = (value) => {
-  return validateWithRE(isIntegerRE, 'Must be an integer value.')(value);
+  return value && validateWithRE(isIntegerRE, 'Must be an integer value.')(value);
 };
 
 export const containsNumber = (value) => {
-  return validateWithRE(numberRE, 'Must Contain at least one number')(value);
+  return value && validateWithRE(numberRE, 'Must Contain at least one number')(value);
 };
 
 export const containsLowercase = (value) => {
-  return validateWithRE(lowercaseRE, 'Must contain at least one lowercase letter.')(value);
+  return value && validateWithRE(lowercaseRE, 'Must contain at least one lowercase letter.')(value);
 };
 
 export const containsUppercase = (value) => {
-  return validateWithRE(uppercaseRE, 'Must contain at least one uppercase letter')(value);
+  return value && validateWithRE(uppercaseRE, 'Must contain at least one uppercase letter')(value);
 };
 
 export const containsTwoWords = (value) => {
   const lowercaseValue = value ? value.toLowerCase() : '';
-  return validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(lowercaseValue);
+  return value && validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(lowercaseValue);
 };
 
 export const isEmail = (value) => {
-  return validateWithRE(emailRE, 'Must be a valid email address.')(value);
+  return value && validateWithRE(emailRE, 'Must be a valid email address.')(value);
 };
 
 export const createValidator = (validationRules) =>
