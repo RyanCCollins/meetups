@@ -7,10 +7,12 @@ import SectionHeader from './SectionHeader/SectionHeader';
 import LoadingIndicator from './LoadingIndicator/LoadingIndicator';
 import BackButton from './BackButton/BackButton';
 import FormInputError from './FormInputError/FormInputError';
+import FormInputField from './FormInputField/FormInputField';
 
 export {
   SectionHeader,
   LoadingIndicator,
   BackButton,
-  FormInputError
+  FormInputError,
+  FormInputField
 };

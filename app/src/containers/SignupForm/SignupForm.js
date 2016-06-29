@@ -16,7 +16,8 @@ import validation from './signupValidation';
 import Popover from 'react-popover';
 import { Link } from 'react-router';
 import {
-  FormInputError
+  FormInputError,
+  FormInputField
 } from 'components';
 import { inputHasError } from 'utils/misc';
 
@@ -98,47 +99,14 @@ class SignupForm extends Component {
             <form
               onSubmit={handleSubmit}
             >
-              <div className="form-group">
-                <label
-                  className={inputHasError(fullnameInput) && 'error'}
-                  htmlFor="fullnameInput"
-                >
-                  Full Name
-                </label>
-                <input
-                  {...fullnameInput}
-                  type="text"
-                  required
-                  className={inputHasError(fullnameInput) && 'error'}
-                  aria-invalid={fullnameInput.error}
-                  id="fullnameInput"
-                  name="name"
-                  placeholder="Full Name"
-                ></input>
-              {inputHasError(fullnameInput) &&
-                  <FormInputError input={fullnameInput} />
-              }
-              </div>
-              <div className="form-group">
-                <label
-                  className={inputHasError(emailInput) && 'error'}
-                  htmlFor="emailInput"
-                >Email</label>
-                <input
-                  {...emailInput}
-                  type="text"
-                  aria-invalid={emailInput.error}
-                  className={inputHasError(emailInput) && 'error'}
-                  aria-required
-                  aria-describedby="emailInputError"
-                  name="email"
-                  id="emailInput"
-                  placeholder="Email Address"
-                ></input>
-                {inputHasError(emailInput) &&
-                  <FormInputError input={emailInput} />
-                }
-              </div>
+              <FormInputField
+                {...fullnameInput}
+                labelText="Full Name"
+              />
+              <FormInputField
+                {...fullnameInput}
+                labelText="Email Address"
+              />
               <div className="form-group">
                 <label
                   className={inputHasError(passwordInput) &&'error'}
@@ -164,26 +132,11 @@ class SignupForm extends Component {
                   <FormInputError input={passwordInput} />
                 }
               </div>
-              <div className="form-group">
-                <label
-                  className={inputHasError(passwordConfirmationInput) && 'error'}
-                  htmlFor="passwordConfirmationInput"
-                >
-                  Password Confirmation
-                </label>
-                <input
-                  {...passwordConfirmationInput}
-                  type="password"
-                  aria-invalid={passwordConfirmationInput.error}
-                  className={inputHasError(passwordConfirmationInput) && 'error'}
-                  id="passwordConfirmationInput"
-                  name="passwordConfirmationInput"
-                  placeholder="Password Confirmation"
-                ></input>
-                {inputHasError(passwordConfirmationInput) &&
-                  <FormInputError input={passwordConfirmationInput} />
-                }
-              </div>
+              <FormInputField
+                {...passwordConfirmationInput}
+                labelText="Password Confimration"
+                inputType="password"
+              />
               <div className={styles.buttonGroup}>
                 <Button
                   isExpanded
