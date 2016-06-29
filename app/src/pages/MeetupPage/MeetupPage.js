@@ -5,7 +5,7 @@ import {
   SectionHeader,
   LoadingIndicator,
   BackButton,
-  MeetupList
+  MeetupPanel
 } from '../../components';
 
 class MeetupPage extends Component {
@@ -18,7 +18,7 @@ class MeetupPage extends Component {
         <div className={styles.container}>
           <BackButton />
           <SectionHeader header="Meetups" />
-          <MeetupList
+          <MeetupPanel
             {...this.props}
           />
         </div>

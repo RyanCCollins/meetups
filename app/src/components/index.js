@@ -11,6 +11,7 @@ import FormInputField from './FormInputField/FormInputField';
 import FormFooter from './FormFooter/FormFooter';
 import ErrorAlert from './ErrorAlert/ErrorAlert';
 import MeetupList from './MeetupList/MeetupList';
+import MeetupPanel from './MeetupPanel/MeetupPanel';
 
 export {
   SectionHeader,
@@ -20,5 +21,6 @@ export {
   FormInputField,
   FormFooter,
   ErrorAlert,
-  MeetupList
+  MeetupList,
+  MeetupPanel
 };
