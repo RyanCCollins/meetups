@@ -15,6 +15,9 @@ import {
 import validation from './signupValidation';
 import Popover from 'react-popover';
 import { Link } from 'react-router';
+import {
+  FormInputError
+} from 'components';
 
 export const fields = [
   'fullnameInput',
@@ -22,6 +25,15 @@ export const fields = [
   'passwordInput',
   'passwordConfirmationInput'
 ];
+
+/**
+ * @function inputHasError
+ * @description determine if the given input has an error
+ * @param {input} - the form input field to check for errors.
+ * @return bool - whether the input has an error or not.
+ */
+const inputHasError = (input) =>
+  input.touched && input.error
 
 const PasswordHint = () => (
   <div className={styles.popoverBody}>
@@ -94,31 +106,34 @@ class SignupForm extends Component {
             <form
               onSubmit={handleSubmit}
             >
-              <div>
-                <label htmlFor="fullnameInput">Full Name</label>
+              <div className="form-group">
+                <label
+                  className={inputHasError(fullnameInput) && 'error'}
+                  htmlFor="fullnameInput"
+                >
+                  Full Name
+                </label>
                 <input
                   {...fullnameInput}
                   type="text"
                   required
-                  className={fullnameInput.error ? 'error': ''}
                   aria-invalid={fullnameInput.error}
                   id="fullnameInput"
                   name="name"
                   placeholder="Full Name"
                 ></input>
-              {fullnameInput.touched &&
-                fullnameInput.error &&
-                  <span className="error">
-                    {fullnameInput.error}
-                  </span>
+              {inputHasError(fullnameInput) &&
+                  <FormInputError input={fullnameInput} />
               }
               </div>
-              <div>
-                <label htmlFor="emailInput">Email</label>
+              <div className="form-group">
+                <label
+                  className={inputHasError(emailInput) && 'error'}
+                  htmlFor="emailInput"
+                >Email</label>
                 <input
                   {...emailInput}
                   type="text"
-                  className={emailInput.error ? 'error': ''}
                   aria-invalid={emailInput.error}
                   aria-required
                   aria-describedby="emailInputError"
@@ -126,17 +141,17 @@ class SignupForm extends Component {
                   id="emailInput"
                   placeholder="Email Address"
                 ></input>
-                {emailInput.touched &&
-                  emailInput.error &&
-                  <div id="emailInputError">
-                    <span className="error">
-                      {emailInput.error}
-                    </span>
-                  </div>
+                {inputHasError(emailInput) &&
+                  <FormInputError input={emailInput} />
                 }
               </div>
-              <div>
-                <label htmlFor="passwordInput">Password</label>
+              <div className="form-group">
+                <label
+                  className={inputHasError(passwordInput) &&'error'}
+                  htmlFor="passwordInput"
+                >
+                  Password
+                </label>
                 <Popover isOpen={popoverOpen} preferPlace={'right'} body={<PasswordHint />}>
                   <div></div>
                 </Popover>
@@ -144,36 +159,33 @@ class SignupForm extends Component {
                   {...passwordInput}
                   type="password"
                   name="password"
-                  className={passwordInput.error ? 'error': ''}
                   id="passwordInput"
                   aria-invalid={passwordInput.error}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}
                   onMouseLeave={this.onLeavePassword}
                 ></input>
-                {passwordInput.touched &&
-                  passwordInput.error &&
-                  <small className="form-error">
-                    {passwordInput.error}
-                  </small>
+                {inputHasError(passwordInput) &&
+                  <FormInputError input={passwordInput} />
                 }
               </div>
-              <div>
-                <label htmlFor="passwordConfirmationInput">Password Confirmation</label>
+              <div className="form-group">
+                <label
+                  className={inputHasError(passwordConfirmationInput) && 'error'}
+                  htmlFor="passwordConfirmationInput"
+                >
+                  Password Confirmation
+                </label>
                 <input
                   {...passwordConfirmationInput}
                   type="password"
                   aria-invalid={passwordConfirmationInput.error}
-                  className={passwordConfirmationInput.error ? 'error': ''}
                   id="passwordConfirmationInput"
                   name="passwordConfirmationInput"
                   placeholder="Password Confirmation"
                 ></input>
-                {passwordConfirmationInput.touched &&
-                  passwordConfirmationInput.error &&
-                  <span className="error">
-                    {passwordConfirmationInput.error}
-                  </span>
+                {inputHasError(passwordConfirmationInput) &&
+                  <FormInputError input={passwordConfirmationInput} />
                 }
               </div>
               <div className={styles.buttonGroup}>

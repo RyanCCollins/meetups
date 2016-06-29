@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './AddMeetup.bundle.scss';
+import styles from './AddMeetup.module.scss';
 import CSSModules from 'react-css-modules';
 
 class AddMeetup extends Component {

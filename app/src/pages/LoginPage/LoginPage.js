@@ -8,8 +8,18 @@ import {
   SectionHeader,
   LoadingIndicator
 } from '../../components';
+import { LoginForm } from '../../containers';
 
 class LoginPage extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(formData) {
+    const {
+      dispatch
+    } = this.props;
+  }
   render() {
     const {
       isFetching
@@ -17,7 +27,14 @@ class LoginPage extends React.Component {
     return (
       <LoadingIndicator isLoading={isFetching}>
         <SectionHeader header="Log In" />
-
+        <LoginForm
+          {...this.props}
+          onSubmit={this.handleSubmit}
+        />
+        <div data-alert class="alert-box alert round">
+          This is an alert - alert that is rounded.
+          <a href="#" class="close">&times;</a>
+        </div>
       </LoadingIndicator>
     );
   }
