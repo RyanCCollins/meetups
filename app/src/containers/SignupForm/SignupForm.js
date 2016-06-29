@@ -101,10 +101,12 @@ class SignupForm extends Component {
             >
               <FormInputField
                 {...fullnameInput}
+                field={fullnameInput}
                 labelText="Full Name"
               />
               <FormInputField
-                {...fullnameInput}
+                {...emailInput}
+                field={emailInput}
                 labelText="Email Address"
               />
               <div className="form-group">
@@ -134,6 +136,7 @@ class SignupForm extends Component {
               </div>
               <FormInputField
                 {...passwordConfirmationInput}
+                field={passwordConfirmationInput}
                 labelText="Password Confimration"
                 inputType="password"
               />
