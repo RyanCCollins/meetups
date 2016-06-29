@@ -4,7 +4,8 @@ import cssModules from 'react-css-modules';
 import {
   SectionHeader,
   LoadingIndicator,
-  BackButton
+  BackButton,
+  MeetupList
 } from '../../components';
 
 class MeetupPage extends Component {
@@ -17,6 +18,9 @@ class MeetupPage extends Component {
         <div className={styles.container}>
           <BackButton />
           <SectionHeader header="Meetups" />
+          <MeetupList
+            {...this.props}
+          />
         </div>
       </LoadingIndicator>
     );
