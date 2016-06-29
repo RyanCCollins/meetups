@@ -175,6 +175,7 @@ class SignupForm extends Component {
                   {...passwordConfirmationInput}
                   type="password"
                   aria-invalid={passwordConfirmationInput.error}
+                  className={inputHasError(passwordConfirmationInput) && 'error'}
                   id="passwordConfirmationInput"
                   name="passwordConfirmationInput"
                   placeholder="Password Confirmation"
