@@ -7,6 +7,7 @@ import {
 import styles from './SignupForm.module.scss';
 import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
+import { toastr } from 'redux-toastr';
 import {
   FaCog,
   FaPaperPlane,
@@ -50,10 +51,27 @@ class SignupForm extends Component {
     this.onHoverPassword = this.onHoverPassword.bind(this);
     this.onLeavePassword = this.onLeavePassword.bind(this);
     this.onHoverLink = this.onHoverLink.bind(this);
+    this.handleError = this.handleError.bind(this);
     this.state = {
       popoverOpen: false,
       isHovering: false
     };
+  }
+  componentDidMount() {
+    const {
+      errors
+    } = this.props;
+    if (errors.length) {
+      this.handleError(errors[0]);
+    }
+  }
+  componentWillReceiveProps(newProps) {
+    if (newProps.errors.length) {
+      this.handleErrors(newProps.errors[0]);
+    }
+  }
+  handleError(error) {
+    toastr.warn(error);
   }
   onHoverLink() {
     this.setState({

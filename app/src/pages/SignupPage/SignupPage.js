@@ -5,6 +5,8 @@ import styles from './SignupPage.module.scss';
 import cssModules from 'react-css-modules';
 import { SignupForm } from '../../containers';
 import { signupUser } from '../../actions/user';
+import { toastr } from 'redux-toastr';
+
 import {
   SectionHeader,
   LoadingIndicator
@@ -14,21 +16,38 @@ class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
   handleSubmit(params) {
     const {
       isFetching,
-      onSubmitForm,
-      onError
+      onSubmitForm
     } = this.props;
     if (!isFetching) {
       return onSubmitForm({
-        fullname: params.fullname,
-        email: params.email,
-        password: params.password
+        fullname: params.fullnameInput,
+        email: params.emailInput,
+        password: params.passwordInput
       });
     }
-    return onError('Only one submission at a time.');
+  }
+  componentDidMount() {
+    const {
+      errors
+    } = this.props;
+    if (errors.length) {
+      console.log("Called component did mount with ", errors)
+      this.handleError(errors[0]);
+    }
+  }
+  componentWillReceiveProps(newProps) {
+    if (newProps.errors.length) {
+      console.log("Called will receive props with ", newProps)
+      this.handleError(newProps.errors[0]);
+    }
+  }
+  handleError(error) {
+    toastr.error(error);
   }
   render() {
     const {
@@ -55,19 +74,17 @@ SignupPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   errors: PropTypes.array,
   isFetching: PropTypes.bool,
-  onSubmitForm: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired
+  onSubmitForm: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.errors.user,
+  errors: state.errors,
   isFetching: state.user.isFetching
 });
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    onSubmitForm: (params) => dispatch(signupUser(params)),
-    onErrors: (errors) => dispatch({ type: 'SIGNUP_FAILURE', errors })
+    onSubmitForm: (params) => dispatch(signupUser(params))
   }, dispatch);
 
 const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(SignupPage);

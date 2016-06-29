@@ -10,8 +10,9 @@ const displayMessages = (messages) => ({
   messages
 });
 
-const dismissMessage = () => ({
-  type: T.DISMISS_MESSAGE
+const dismissMessage = (message) => ({
+  type: T.DISMISS_MESSAGE,
+  message
 });
 
 export {

@@ -10,6 +10,7 @@ import FormInputError from './FormInputError/FormInputError';
 import FormInputField from './FormInputField/FormInputField';
 import FormFooter from './FormFooter/FormFooter';
 import ErrorAlert from './ErrorAlert/ErrorAlert';
+import MeetupList from './MeetupList/MeetupList';
 
 export {
   SectionHeader,
@@ -18,5 +19,6 @@ export {
   FormInputError,
   FormInputField,
   FormFooter,
-  ErrorAlert
+  ErrorAlert,
+  MeetupList
 };

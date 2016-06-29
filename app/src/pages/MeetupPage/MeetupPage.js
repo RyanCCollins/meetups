@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import styles from './MeetupPage.bundle.scss';
 import cssModules from 'react-css-modules';
 import {
@@ -22,5 +22,9 @@ class MeetupPage extends Component {
     );
   }
 }
+
+MeetupPage.PropTypes = {
+  isFetching: PropTypes.bool.isRequired
+};
 
 export default cssModules(MeetupPage, styles);

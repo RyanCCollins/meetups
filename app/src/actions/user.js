@@ -2,7 +2,7 @@ import * as T from '../constants/user';
 
 /* Failures */
 export const signupFailure = () => ({
-  type: T.SIGNUP_FAILED,
+  type: T.SIGNUP_FAILURE,
   isFetching: false,
   isAuthenticated: false
 });
@@ -52,10 +52,10 @@ const fakeSignup = (signupData) => {
   });
 };
 
-export function signupUser(signupData) {
+export function signupUser(params) {
   return dispatch => {
-    dispatch(signupInitiation(signupData));
-    fakeSignup(sigupData).then((userData) => {
+    dispatch(signupInitiation(params));
+    fakeSignup(params).then((userData) => {
       dispatch(signupSuccess(userData));
     }).catch((error) => {
       dispatch({ type: 'DISPLAY_ERROR', error });
