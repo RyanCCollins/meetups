@@ -86,8 +86,8 @@ class LoginForm extends Component {
           </Column>
         </Row>
         <FormFooter
-          url="/signup"
-          text="Signup"
+          url="signup"
+          text="Need to create an account?"
         />
       </div>
     );

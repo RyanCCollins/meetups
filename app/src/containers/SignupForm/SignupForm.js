@@ -169,8 +169,8 @@ class SignupForm extends Component {
           </Column>
         </Row>
         <FormFooter
-          url="/login"
-          text="Login"
+          url="login"
+          text="Already have an account?"
         />
       </div>
     );

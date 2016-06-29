@@ -6,6 +6,10 @@ import {
   Column
 } from 'react-foundation';
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const FormFooter = ({
   url,
   text
@@ -13,9 +17,9 @@ const FormFooter = ({
   <Row>
     <Column isColumn large={6} mediun={6} small={12} centerOnSmall>
       <div className={styles.wrapper}>
-        <p className={styles.text}>Already have an account?
-          <Link to={url}>
-            {text}
+        <p className={styles.text}>{text}
+          <Link to={`/${url}`}>
+            {` ${capitalizeFirstLetter(url)}`}
           </Link>
         </p>
       </div>
