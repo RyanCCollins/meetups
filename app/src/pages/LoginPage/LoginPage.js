@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import styles from './LoginPage.module.scss';
-import CSSModules from 'react-css-modules';
-import { loginUser } from '../../actions/user';
+import cssModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { loginUser } from '../../actions/user';
 import {
   SectionHeader,
   LoadingIndicator
@@ -15,10 +15,14 @@ class LoginPage extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(formData) {
+  handleSubmit(params) {
     const {
-      dispatch
+      onSubmitForm
     } = this.props;
+    return onSubmitForm({
+      email: params.emailInput,
+      password: params.passwordInput
+    });
   }
   render() {
     const {
@@ -31,17 +35,15 @@ class LoginPage extends React.Component {
           {...this.props}
           onSubmit={this.handleSubmit}
         />
-        <div data-alert class="alert-box alert round">
-          This is an alert - alert that is rounded.
-          <a href="#" class="close">&times;</a>
-        </div>
       </LoadingIndicator>
     );
   }
 }
 
 LoginPage.propTypes = {
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -49,12 +51,12 @@ const mapStateToProps = (state) => ({
   isFetching: state.user.isFetching
 });
 
+
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    loginUser
+    onSubmitForm: (params) => dispatch(loginUser(params))
   }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CSSModules(LoginPage, styles));
+const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+
+export default cssModules(SmartComponent, styles);

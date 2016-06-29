@@ -5,7 +5,6 @@ import memoize from 'lru-memoize';
 const passwordInput = [
   validation.minLength(8),
   validation.maxLength(20),
-  validation.containsNumber,
   validation.valueRequired,
 ];
 

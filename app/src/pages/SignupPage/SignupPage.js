@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './SignupPage.module.scss';
+import cssModules from 'react-css-modules';
 import { SignupForm } from '../../containers';
 import { signupUser } from '../../actions/user';
 import {
@@ -9,25 +10,25 @@ import {
   LoadingIndicator
 } from '../../components';
 
-class Signup extends Component {
+class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(formData) {
-    console.log("clicked on submit")
+  handleSubmit(params) {
     const {
       isFetching,
-      dispatch
+      onSubmitForm,
+      onError
     } = this.props;
     if (!isFetching) {
-      return signupUser({
-        fullname: formData.fullname,
-        email: formData.email,
-        password: formData.password
+      return onSubmitForm({
+        fullname: params.fullname,
+        email: params.email,
+        password: params.password
       });
     }
-    return dispatch({ type: 'DISPLAY_ERROR', error: 'Only one submission at a time.' });
+    return onError('Only one submission at a time.');
   }
   render() {
     const {
@@ -50,10 +51,12 @@ class Signup extends Component {
   }
 }
 
-Signup.propTypes = {
-  dispatch: PropTypes.func,
+SignupPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   errors: PropTypes.array,
-  isFetching: PropTypes.bool
+  isFetching: PropTypes.bool,
+  onSubmitForm: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -63,10 +66,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    signupUser
+    onSubmitForm: (params) => dispatch(signupUser(params)),
+    onError: (error) => dispatch({ type: 'DISPLAY_ERROR', error })
   }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Signup);
+const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(SignupPage);
+
+export default cssModules(SmartComponent, styles);

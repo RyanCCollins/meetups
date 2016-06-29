@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './LoginForm.module.scss';
-import CSSModules from 'react-css-modules';
+import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
 import validation from './loginValidation';
+import {
+  FormInputField,
+  FormFooter
+ } from 'components';
 import {
   FaCog,
   FaPaperPlane
@@ -43,51 +47,17 @@ class LoginForm extends Component {
             <form
               onSubmit={handleSubmit}
             >
-              <div className="form-group">
-                <label htmlFor="emailInput">Email Address</label>
-                <input
-                  {...emailInput}
-                  type="text"
-                  required
-                  className={emailInput.error ? 'error' : ''}
-                  aria-invalid={emailInput.error}
-                  aria-describedby="emailInputError"
-                  id="emailInput"
-                  name="name"
-                  placeholder="Full Name"
-                />
-              {emailInput.touched &&
-                emailInput.error &&
-                <span id="emailInputError">
-                  <small className="error">
-                    {emailInput.error}
-                  </small>
-                </span>
-              }
-              >
-                <div className="form-group">
-                  <label htmlFor="passwordInput">Password</label>
-                  <input
-                    {...passwordInput}
-                    type="text"
-                    required
-                    className={passwordInput.error ? 'error' : ''}
-                    aria-invalid={passwordInput.error}
-                    aria-describedby="passwordInputError"
-                    id="passwordInput"
-                    name="password"
-                    placeholder="Password"
-                  />
-                {passwordInput.touched &&
-                  passwordInput.error &&
-                  <span id="passwordInputError">
-                    <small className="error">
-                      {passwordInput.error}
-                    </small>
-                  </span>
-                }
-                </div>
-              </div>
+              <FormInputField
+                {...emailInput}
+                field={emailInput}
+                labelText="Email Address"
+              />
+              <FormInputField
+                {...passwordInput}
+                field={passwordInput}
+                labelText="Password"
+                inputType="password"
+              />
               <div className={styles.buttonGroup}>
                 <Button
                   isExpanded
@@ -115,6 +85,10 @@ class LoginForm extends Component {
             </form>
           </Column>
         </Row>
+        <FormFooter
+          url="/signup"
+          text="Signup"
+        />
       </div>
     );
   }
@@ -131,4 +105,4 @@ export default reduxForm({
   form: 'loginForm',
   fields,
   validate: validation
-})(CSSModules(LoginForm, styles));
+})(cssModules(LoginForm, styles));

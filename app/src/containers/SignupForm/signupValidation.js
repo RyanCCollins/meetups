@@ -14,12 +14,15 @@ const passwordInput = [
 
 const fullnameInput = [
   validation.containsTwoWords,
-  validation.valueRequired
+  validation.valueRequired,
+  validation.maxLength(50)
 ];
 
 const emailInput = [
   validation.isEmail,
-  validation.valueRequired
+  validation.valueRequired,
+  validation.maxLength(50),
+  validation.minLength(2)
 ];
 
 const passwordConfirmationInput = [
