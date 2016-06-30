@@ -9,8 +9,19 @@ import {
   MeetupList,
   Modal
 } from '../../components';
+import { AddMeetup } from 'containers';
 
 class MeetupPage extends Component {
+  constructor(props) {
+    super(props);
+    this.handleAddMeetup = this.handleAddMeetup.bind(this);
+    this.state = {
+      isAddingMeetup: false
+    };
+  }
+  handleAddMeetup() {
+    this.setState({ isAddingMeetup: true });
+  }
   render() {
     const {
       isFetching,
@@ -22,13 +33,16 @@ class MeetupPage extends Component {
           <BackButton />
           <SectionHeader header="Meetups" />
           <MeetupPanel
+            onAddMeetup={this.handleAddMeetup}
             {...this.props}
           >
             <MeetupList
               meetups={meetups || null}
             />
           </MeetupPanel>
-          <Modal isOpen />
+          {/*<Modal isOpen={this.state.isAddingMeetup || false}>
+            <AddMeetup />
+          </Modal>*/}
         </div>
       </LoadingIndicator>
     );

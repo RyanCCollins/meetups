@@ -11,14 +11,13 @@ const MeetupList = ({
 }) => (
   <Row>
     <Column large={6} small={10} isColumn centerOnSmall>
-
+      <div></div>
     </Column>
   </Row>
 );
 
 MeetupList.propTypes = {
-  meetups: PropTypes.array,
-  onSubmitNewMeetup: PropTypes.func.isRequired
+  meetups: PropTypes.array
 };
 
 export default cssModules(MeetupList, styles);

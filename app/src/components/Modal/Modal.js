@@ -39,7 +39,6 @@ class Modal extends Component {
         <div className={styles.modal}>
           {children}
         </div>
-        <button onClick={this.hideModal}>Close</button>
       </BoronModal>
     );
   }

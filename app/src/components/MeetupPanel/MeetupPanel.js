@@ -11,7 +11,7 @@ import cssModules from 'react-css-modules';
 import MeetupList from 'components';
 
 const MeetupPanel = ({
-  onSubmitNewMeetup,
+  onAddMeetup,
   children
 }) => (
   <Row>
@@ -22,7 +22,7 @@ const MeetupPanel = ({
             <GoCalendar className={styles.iconStyle} />
           </span>
           <h4 className={styles.text}>No Meetups Yet...</h4>
-          <Button className={styles.button} onClick={onSubmitNewMeetup}>
+          <Button className={styles.button} onClick={onAddMeetup}>
             Create One
           </Button>
         </div>
@@ -35,7 +35,7 @@ const MeetupPanel = ({
 MeetupPanel.propTypes = {
   meetups: PropTypes.array,
   children: React.children,
-  onSubmitNewMeetup: PropTypes.func.isRequired
+  onAddMeetup: PropTypes.func.isRequired
 };
 
 export default cssModules(MeetupPanel, styles);
