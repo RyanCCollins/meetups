@@ -104,7 +104,7 @@ class SignupForm extends Component {
         <Row>
           <Column
             small={12}
-            medium={6}
+            medium={8}
             large={6}
             className={styles.formContainer}
             isColumn
