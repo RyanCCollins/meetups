@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './MeetupPage.bundle.scss';
+import { connect } from 'react-redux';
 import cssModules from 'react-css-modules';
 import {
   SectionHeader,
@@ -40,9 +41,9 @@ class MeetupPage extends Component {
               meetups={meetups || null}
             />
           </MeetupPanel>
-          {/*<Modal isOpen={this.state.isAddingMeetup || false}>
+          <Modal isOpen={this.state.isAddingMeetup || false}>
             <AddMeetup />
-          </Modal>*/}
+          </Modal>
         </div>
       </LoadingIndicator>
     );
@@ -59,4 +60,5 @@ const mapStateToProps = (state) => ({
   meetups: state.meetups
 });
 
-export default cssModules(MeetupPage, styles);
+const SmartComponent = connect(mapStateToProps)(MeetupPage);
+export default cssModules(SmartComponent, styles);
