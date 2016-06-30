@@ -50,9 +50,7 @@ class AddMeetup extends Component {
       <div>
         <Row>
           <Column
-            small={12}
-            medium={6}
-            large={6}
+            large={12}
             className={styles.formContainer}
             isColumn
             centerOnSmall
@@ -65,9 +63,26 @@ class AddMeetup extends Component {
                 field={nameInput}
                 labelText="Name of Event"
               />
-              <Button disabled={submitting}>
-                Submit
-              </Button>
+              <FormInputField
+                {...nameInput}
+                field={nameInput}
+                labelText="Name of Event"
+              />
+              <FormInputField
+                {...nameInput}
+                field={nameInput}
+                labelText="Name of Event"
+              />
+              <FormInputField
+                {...nameInput}
+                field={nameInput}
+                labelText="Name of Event"
+              />
+              <div className={styles.buttonWrapper}>
+                <Button size={'large'} disabled={submitting}>
+                  Submit
+                </Button>
+              </div>
             </form>
           </Column>
         </Row>
