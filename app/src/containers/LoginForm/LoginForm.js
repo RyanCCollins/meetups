@@ -6,7 +6,8 @@ import validation from './loginValidation';
 import {
   FormInputField,
   FormFooter,
-  ErrorAlert
+  ErrorAlert,
+  FormButtonGroup
 } from 'components';
 import {
   FaCog,
@@ -96,30 +97,10 @@ class LoginForm extends Component {
                 labelText="Password"
                 inputType="password"
               />
-              <div className={styles.buttonGroup}>
-                <Button
-                  isExpanded
-                  className={styles.marginRight}
-                  size={'large'}
-                  disabled={submitting}
-                >
-                  {submitting ?
-                    <FaCog className="fa-spin" />
-                  :
-                    <FaPaperPlane />
-                  }{' Submit'}
-                </Button>
-                <Button
-                  isExpanded
-                  isHollow
-                  size={'large'}
-                  disabled={submitting}
-                  onClick={resetForm}
-                  className={styles.buttonMarginLeft}
-                >
-                  Clear Form
-                </Button>
-              </div>
+              <FormButtonGroup
+                submitting={submitting}
+                resetForm={resetForm}
+              />
             </form>
           </Column>
         </Row>
