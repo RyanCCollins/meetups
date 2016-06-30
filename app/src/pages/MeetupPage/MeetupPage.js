@@ -6,7 +6,8 @@ import {
   LoadingIndicator,
   BackButton,
   MeetupPanel,
-  MeetupList
+  MeetupList,
+  Modal
 } from '../../components';
 
 class MeetupPage extends Component {
@@ -27,6 +28,7 @@ class MeetupPage extends Component {
               meetups={meetups || null}
             />
           </MeetupPanel>
+          <Modal isOpen />
         </div>
       </LoadingIndicator>
     );

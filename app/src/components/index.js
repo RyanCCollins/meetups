@@ -13,6 +13,7 @@ import ErrorAlert from './ErrorAlert/ErrorAlert';
 import MeetupList from './MeetupList/MeetupList';
 import MeetupPanel from './MeetupPanel/MeetupPanel';
 import FormButtonGroup from './FormButtonGroup/FormButtonGroup';
+import Modal from './Modal/Modal';
 
 export {
   SectionHeader,
@@ -24,5 +25,6 @@ export {
   ErrorAlert,
   MeetupList,
   MeetupPanel,
-  FormButtonGroup
+  FormButtonGroup,
+  Modal
 };

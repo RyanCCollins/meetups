@@ -10,11 +10,6 @@ import {
   FormButtonGroup
 } from 'components';
 import {
-  FaCog,
-  FaPaperPlane
-} from 'react-icons/lib/fa';
-import {
-  Button,
   Row,
   Column
 } from 'react-foundation';
