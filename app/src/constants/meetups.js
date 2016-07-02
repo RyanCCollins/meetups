@@ -1,3 +1,3 @@
-export const MEETUPS_REQUEST = 'MEETUPS_REQUEST';
-export const MEETUPS_SUCCESS = 'MEETUPS_SUCCESS';
-export const MEETUPS_FAILURE = 'MEETUPS_FAILURE';
+export const GET_MEETUPS = 'GET_MEETUPS';
+export const GET_MEETUP = 'GET_MEETUP';
+export const CREATE_MEETUP = 'CREATE_MEETUP';

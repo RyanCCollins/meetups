@@ -6,6 +6,7 @@ import Main from './Main';
 // Map the global state to global props here.
 // See: https://egghead.io/lessons/javascript-redux-generating-containers-with-connect-from-react-redux-visibletodolist
 const mapStateToProps = (state) => ({
+  meetups: state.meetups,
   messages: state.messages,
   errors: state.errors,
   user: state.user

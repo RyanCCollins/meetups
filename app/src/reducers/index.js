@@ -7,13 +7,14 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import errors from './errors';
 import messages from './messages';
 import user from './user';
-
+import meetups from './meetups';
 
 const rootReducer = combineReducers({
   // Apply all of the reducers here.
   errors,
   messages,
   user,
+  meetups,
   routing: routerReducer,
   form: formReducer,
   toastr: toastrReducer

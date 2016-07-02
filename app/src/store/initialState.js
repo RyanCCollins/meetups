@@ -1,7 +1,11 @@
 const initalState = {
   // Most apps have the need to show messages and errors.
   // Just add an array or object for each model.
-  meetups: [],
+  meetups: {
+    isFetching: false,
+    data: [],
+    selectedMeetup: {}
+  },
   messages: {
     alertVisible: false,
     user: [],

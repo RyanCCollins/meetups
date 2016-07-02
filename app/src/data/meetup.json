@@ -1,13 +1,4 @@
 {
-  "types": [
-    "other",
-    "birthday-party",
-    "office-party",
-    "coding-meetup"
-  ]
-}
-
-{
   "meetups": [{
     "id": 1,
     "key": "whatever",
@@ -38,7 +29,9 @@
     "createdAt": "2015-03-25T12:00:00",
     "updatedAt": "2015-03-25T12:40:03",
     "type": "coding-meetup",
-    "host": {},
+    "host": {
+      "name": "Ryan Collins"
+    },
     "startDate": "2015-03-25T12:00:00",
     "endDate": "2015-03-25T12:20:20",
     "location": {

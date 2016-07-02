@@ -4,103 +4,143 @@
 // A promise.  This works great with redux promise middlewares
 // See the actions for post to see it in action located in ../actions/post.js
 import request from './request';
+import { curry } from 'lodash';
+
+const GET = 'GET';
+const POST = 'POST';
+const PUT = 'PUT';
+const DELETE = 'DELETE';
+
+const Url = String;
+
+
+// Take a resouce and paramaters and construct a url for a request.
+
+const parameters = [
+  'http://localhost:3000',
+  'api'
+];
+
+const joinUrl = curry((array) => array.join('/'))
+
+const buildParams = curry(
+  (paramaters, resource, id = '') =>
+    [...parameters, resource, id]
+)
+
+const apiCall = (type) => {
+  switch (type) {
+    case GET:
+
+    default:
+
+  }
+}
+
+const networkAPI = (resource) =>
+  (type, options) =>
+
+const defaultOptions = {
+  mode: 'cors',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+};
+
+const buildUrl = ({ id, resource } = {}) => {
+  const parameters = [
+    'http://localhost:3000',
+    'api'
+  ];
+
+  if (resource) parameters.concat([resource]);
+  if (id) parameters.concat([id]);
+  return parameters.join('/');
+};
+
+const get = ({ path, options = {} }) => {
+  return request(buildUrl(path), Object.assign(
+    options,
+    defaultOptions,
+    { method: 'GET' }
+  ));
+};
+
+const post = (path, body, options = {}) => {
+  return request(buildUrl(path), Object.assign(
+    options,
+    defaultOptions,
+    {
+      method: 'POST',
+      body: JSON.stringify(body)
+    }
+  ));
+};
 
 /**
- * @function Network
- * @description Factory function to create a object that can send
- * requests to a specific resource on the server.
- * @param {string} resource The resource used for config
- */
- const Network = resource => {
-   const buildUrl = ({ id, resource } = {}) => {
-     const parameters = [
-       'http://localhost:3000',
-       'api'
-     ];
+* @function patch
+* @description Make a PUT request.
+* @param {string} path
+* @param {object} body
+* @param {object} options
+* @returns {promise}
+*/
+const patch = (path, body, options = {}) => {
+  return request(buildUrl(path), Object.assign(
+    options,
+    defaultOptions,
+    { method: 'PUT' }
+  ));
+};
 
-     if (resource) parameters.concat([resource]);
-     if (id) parameters.concat([id]);
-     return parameters.join('/');
-   };
+/**
+* @function deleteOne
+* @description Make a DELETE request.
+* @param {string} path
+* @param {object} options
+* @returns {promise}
+*/
+const deleteOne = (path, options = {}) => {
+  return request(buildUrl(path), Object.assign(
+    options,
+    defaultOptions,
+    { method: 'DELETE' }
+  ));
+};
 
-   // Default option for every request
-   const defaultOptions = {
-     mode: 'cors',
-     headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json'
-     }
-   };
+const Network = (resource) => {
+  get,
+  post,
+  patch,
+  deleteOne
+};
 
-   return {
+export default Network;
 
-     /**
-      * @function post
-      * @description Make a POST request.
-      * @param {string} path
-      * @param {object} body
-      * @param {object} options
-      * @returns {promise}
-      */
-     post: (path, body, options = {}) => {
-       return request(buildUrl(path), Object.assign(
-         options,
-         defaultOptions,
-         {
-           method: 'POST',
-           body: JSON.stringify(body)
-         }
-       ));
-     },
-
-     /**
-      * @function get
-      * @description Make a GET request.
-      * @param {string} path
-      * @param {object} options
-      * @returns {promise}
-      */
-     get: (path, options = {}) => {
-       return request(buildUrl(path), Object.assign(
-         options,
-         defaultOptions,
-         { method: 'GET' }
-       ));
-     },
-
-     /**
-      * @function edit
-      * @description Make a PUT request.
-      * @param {string} path
-      * @param {object} body
-      * @param {object} options
-      * @returns {promise}
-      */
-     update: (path, body, options = {}) => {
-       return request(buildUrl(path), Object.assign(
-         options,
-         defaultOptions,
-         { method: 'PUT' }
-       ));
-     },
-
-     /**
-      * @function delete
-      * @description Make a DELETE request.
-      * @param {string} path
-      * @param {object} options
-      * @returns {promise}
-      */
-     delete: (path, options = {}) => {
-       return request(buildUrl(path), Object.assign(
-         options,
-         defaultOptions,
-         { method: 'DELETE' }
-       ));
-     },
-
-     ping: () => request(buildUrl(), { method: 'GET' })
-   };
- };
-
- export default Network;
+{
+  "addresses_attributes": [
+    {
+      "full_address": "1213 Coral Ln, PO Box 572, Boston, MA 02133"
+      "default" : true
+      // --- OR ---
+      "street_address" :"1213 Coral Ln",
+      "street_address_two": "PO Box 572",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02133",
+      "default" : true
+    },
+    {
+      "full_address": "2020 Main St, Unit 1, Boston, MA 02143"
+      "default" : false
+      // --- OR ---
+      "street_address" :"2020 Main St",
+      "street_address_two": "Unit 1",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02143",
+      "default" : true
+    }
+  ]
+}

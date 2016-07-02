@@ -125,7 +125,7 @@ class SignupForm extends Component {
               />
               <div className="form-group">
                 <label
-                  className={inputHasError(passwordInput) &&'error'}
+                  className={inputHasError(passwordInput) && 'error'}
                   htmlFor="passwordInput"
                 >
                   Password
@@ -138,7 +138,7 @@ class SignupForm extends Component {
                   type="password"
                   name="password"
                   id="passwordInput"
-                  className={inputHasError(passwordInput) &&'error'}
+                  className={inputHasError(passwordInput) && 'error'}
                   aria-invalid={passwordInput.error !== null}
                   placeholder="Password"
                   onMouseEnter={this.onHoverPassword}

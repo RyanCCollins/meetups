@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './MeetupPage.bundle.scss';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import cssModules from 'react-css-modules';
 import {
   SectionHeader,
@@ -11,6 +12,10 @@ import {
   Modal
 } from '../../components';
 import { AddMeetup } from 'containers';
+import {
+  getMeetups,
+  createMeetup
+} from '../../actions/meetups';
 
 class MeetupPage extends Component {
   constructor(props) {
@@ -19,6 +24,13 @@ class MeetupPage extends Component {
     this.state = {
       isAddingMeetup: false
     };
+  }
+  componentDidMount() {
+    const {
+      getMeetups,
+      isFetching
+    } = this.props;
+    getMeetups();
   }
   handleAddMeetup() {
     this.setState({ isAddingMeetup: true });
@@ -38,7 +50,7 @@ class MeetupPage extends Component {
             {...this.props}
           >
             <MeetupList
-              meetups={meetups || null}
+              meetups={meetups.data || null}
             />
           </MeetupPanel>
           <Modal isOpen={this.state.isAddingMeetup || false}>
@@ -51,14 +63,24 @@ class MeetupPage extends Component {
 }
 
 MeetupPage.propTypes = {
+  errors: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
-  meetups: PropTypes.array.isRequired
+  meetups: PropTypes.array.isRequired,
+  getMeetups: PropTypes.func.isRequired,
+  createMeetup: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   errors: state.errors,
+  isFetching: state.meetups.isFetching,
   meetups: state.meetups
 });
 
-const SmartComponent = connect(mapStateToProps)(MeetupPage);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({
+    getMeetups: () => dispatch(getMeetups()),
+    createMeetup: (data) => dispatch(createMeetup(data))
+  }, dispatch);
+
+const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(MeetupPage);
 export default cssModules(SmartComponent, styles);

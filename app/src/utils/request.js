@@ -10,7 +10,7 @@ export default function request(url, options) {
   return new Promise((resolve, reject) => {
     if (!url) reject(new Error('URL parameter required'));
     if (!options) reject(new Error('Options parameter required'));
-
+    console.log(`Request made to : ${url} with options: ${options}`)
     fetch(url, options)
       .then(response => response.json())
       .then(response => {
