@@ -1,5 +1,4 @@
 // Brilliant network wrapper courteousy of
-// https://github.com/pburtchaell/redux-promise-middleware
 // Works to create requests to a network resource and wraps the requests in
 // A promise.  This works great with redux promise middlewares
 // See the actions for post to see it in action located in ../actions/post.js
@@ -117,30 +116,3 @@ const Network = (resource) => {
 };
 
 export default Network;
-
-{
-  "addresses_attributes": [
-    {
-      "full_address": "1213 Coral Ln, PO Box 572, Boston, MA 02133"
-      "default" : true
-      // --- OR ---
-      "street_address" :"1213 Coral Ln",
-      "street_address_two": "PO Box 572",
-      "city": "Boston",
-      "state": "MA",
-      "zip": "02133",
-      "default" : true
-    },
-    {
-      "full_address": "2020 Main St, Unit 1, Boston, MA 02143"
-      "default" : false
-      // --- OR ---
-      "street_address" :"2020 Main St",
-      "street_address_two": "Unit 1",
-      "city": "Boston",
-      "state": "MA",
-      "zip": "02143",
-      "default" : true
-    }
-  ]
-}
