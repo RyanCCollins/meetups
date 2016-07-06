@@ -16,6 +16,32 @@ import {
   getMeetups,
   createMeetup
 } from '../../actions/meetups';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import {
+  Column,
+  Row
+} from 'react-foundation';
+
+
+const position = [51.505, -0.09];
+const TheMap = () => (
+  <Row>
+    <Column small={12} isColumn className={styles.mapContainer}>
+      <Map center={position} zoom={13}>
+        <TileLayer
+          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={position}>
+          <Popup>
+            <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+          </Popup>
+        </Marker>
+      </Map>
+    </Column>
+  </Row>
+);
+
 
 class MeetupPage extends Component {
   constructor(props) {
@@ -27,10 +53,9 @@ class MeetupPage extends Component {
   }
   componentDidMount() {
     const {
-      getMeetups,
-      isFetching
+      getMeetupsList
     } = this.props;
-    getMeetups();
+    getMeetupsList();
   }
   handleAddMeetup() {
     this.setState({ isAddingMeetup: true });
@@ -53,6 +78,7 @@ class MeetupPage extends Component {
               meetups={meetups.data || null}
             />
           </MeetupPanel>
+          <TheMap />
           <Modal isOpen={this.state.isAddingMeetup || false}>
             <AddMeetup />
           </Modal>
@@ -65,9 +91,9 @@ class MeetupPage extends Component {
 MeetupPage.propTypes = {
   errors: PropTypes.array,
   isFetching: PropTypes.bool.isRequired,
-  meetups: PropTypes.array.isRequired,
-  getMeetups: PropTypes.func.isRequired,
-  createMeetup: PropTypes.func.isRequired
+  meetups: PropTypes.object.isRequired,
+  getMeetupsList: PropTypes.func.isRequired,
+  createNewMeetup: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -78,8 +104,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
-    getMeetups: () => dispatch(getMeetups()),
-    createMeetup: (data) => dispatch(createMeetup(data))
+    getMeetupsList: () => dispatch(getMeetups()),
+    createNewMeetup: (data) => dispatch(createMeetup(data))
   }, dispatch);
 
 const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(MeetupPage);

@@ -36,8 +36,6 @@ const apiCall = (type) => {
   }
 }
 
-const networkAPI = (resource) =>
-  (type, options) =>
 
 const defaultOptions = {
   mode: 'cors',
@@ -109,10 +107,10 @@ const deleteOne = (path, options = {}) => {
 };
 
 const Network = (resource) => {
-  get,
-  post,
-  patch,
-  deleteOne
+  // get,
+  // post,
+  // patch,
+  // deleteOne
 };
 
 export default Network;
