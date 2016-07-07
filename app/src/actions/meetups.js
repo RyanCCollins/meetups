@@ -3,7 +3,7 @@
  * To create your action creators.
  */
 import * as T from '../constants/meetups';
-import Network from '../utils/network';
+import { Network } from '../utils/network';
 
 export const getMeetups = () => ({
   type: T.GET_MEETUPS,
@@ -19,5 +19,19 @@ export const createMeetup = (data) => ({
   type: T.CREATE_MEETUP,
   payload: {
     promise: Network.post('meetups', data)
+  }
+});
+
+export const deleteMeetup = (id) => ({
+  type: T.DELETE_MEETUP,
+  payload: {
+    promise: Network.delete('meetups', id)
+  }
+});
+
+export const updateMeetup = (id, data) => ({
+  type: T.UPDATE_MEETUP,
+  payload: {
+    promise: Network.update('meetups', id, data)
   }
 });

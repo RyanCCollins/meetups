@@ -4,7 +4,8 @@ const initalState = {
   meetups: {
     isFetching: false,
     data: [],
-    selectedMeetup: {}
+    selectedMeetup: {},
+    errors: null
   },
   messages: {
     alertVisible: false,

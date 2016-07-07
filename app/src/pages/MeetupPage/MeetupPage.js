@@ -14,6 +14,9 @@ import {
 import { AddMeetup } from 'containers';
 import {
   getMeetups,
+  getMeetup,
+  deleteMeetup,
+  updateMeetup,
   createMeetup
 } from '../../actions/meetups';
 
@@ -62,7 +65,7 @@ class MeetupPage extends Component {
 }
 
 MeetupPage.propTypes = {
-  errors: PropTypes.array,
+  error: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
   meetups: PropTypes.object.isRequired,
   getMeetupsList: PropTypes.func.isRequired,
@@ -70,7 +73,7 @@ MeetupPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.errors,
+  error: state.meetups.error,
   isFetching: state.meetups.isFetching,
   meetups: state.meetups
 });
@@ -78,7 +81,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
     getMeetupsList: () => dispatch(getMeetups()),
-    createNewMeetup: (data) => dispatch(createMeetup(data))
+    createNewMeetup: (data) => dispatch(createMeetup(data)),
+    getOneMeetup: (id) => dispatch(getMeetup(id)),
+    updateOneMeetup: (id) => dispatch(updateMeetup(id)),
+    deleteOneMeetup: (id) => dispatch(deleteMeetup(id))
   }, dispatch);
 
 const SmartComponent = connect(mapStateToProps, mapDispatchToProps)(MeetupPage);

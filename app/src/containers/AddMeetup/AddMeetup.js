@@ -3,7 +3,8 @@ import styles from './AddMeetup.module.scss';
 import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
 import {
-  FormInputField
+  FormInputField,
+  SelectField
 } from 'components';
 import {
   Row,
@@ -11,6 +12,38 @@ import {
   Button
 } from 'react-foundation';
 
+const partOptions = [
+  {
+    id: 0,
+    name: 'Coding Meetup',
+    value: 'meetup'
+  },
+  {
+    id: 1,
+    name: 'Work Gathering',
+    value: 'work'
+  },
+  {
+    id: 2,
+    name: 'Birthday',
+    value: 'birthday'
+  },
+  {
+    id: 3,
+    name: 'Conference Talk',
+    value: 'conference'
+  },
+  {
+    id: 4,
+    name: 'Wedding',
+    value: 'wedding'
+  },
+  {
+    id: 5,
+    name: 'Other',
+    value: 'other'
+  }
+];
 
 const fields = [
   'nameInput',
@@ -63,8 +96,9 @@ class AddMeetup extends Component {
                 field={nameInput}
                 labelText="Name of Event"
               />
+              <SelectField options={} {...typeInput} />
               <FormInputField
-                {...nameInput}
+                {...typeInput}
                 field={nameInput}
                 labelText="Name of Event"
               />
