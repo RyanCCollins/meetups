@@ -1,4 +1,5 @@
-import request from './request';
+import fetch from 'isomorphic-fetch';
+import request from 'utils';
 
 const defaultOptions = {
   mode: 'cors',
