@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import styles from './AddMeetup.module.scss';
 import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
-import DatePicker from 'react-datepicker';
+import { DateField, TransitionView, Calendar } from 'react-date-picker';
+import 'react-date-picker/index.css';
 import moment from 'moment';
 import {
   FormInputField,
@@ -118,36 +119,43 @@ class AddMeetup extends Component {
                 options={defaultSelectOptions}
               />
               <FormInputField
-                {...typeInput}
-                field={nameInput}
-                labelText="Name of Event"
-              />
-              <FormInputField
                 {...hostInput}
                 field={hostInput}
                 labelText="Who's Hosting the Event?"
               />
               <div className="form-group">
-                <DatePicker
-                  {...startDateInput}
-                  dateFormat="DD/MM/YYYY"
-                  placeholderText="Click to select a start date"
-                  selected={moment()}
-                  startDate={moment()}
-                  endDate={moment()}
-                  onChange={this.handleStartDateChange}
-                />
-              </div>
-              <div className="form-group">
-                <DatePicker
-                  {...endDateInput}
-                  dateFormat="DD/MM/YYYY"
-                  placeholderText="Click to select an end date"
-                  selected={moment()}
-                  startDate={moment()}
-                  endDate={moment()}
-                  onChange={this.handleEndDateChange}
-                />
+
+                <Row>
+                  <Column large={6}>
+                    <label htmlFor="start-date-input">Start Date</label>
+                    <DateField
+                      {...startDateInput}
+                      className={styles.dateInput}
+                      id="start-date-input"
+                      forceValidDate
+                      defaultValue={"2016-05-30 15:23:34"}
+                      dateFormat="YYYY-MM-DD HH:mm:ss"
+                    >
+                      <TransitionView>
+                        <Calendar style={{padding: 10}} />
+                      </TransitionView>
+                    </DateField>
+                  </Column>
+                  <Column large={6}>
+                    <label htmlFor="end-date-input">End Date</label>
+                    <DateField
+                      {...endDateInput}
+                      className={styles.dateInput}
+                      forceValidDate
+                      defaultValue={"2016-05-30 15:23:34"}
+                      dateFormat="YYYY-MM-DD HH:mm:ss"
+                    >
+                      <TransitionView>
+                        <Calendar style={{padding: 10}}/>
+                      </TransitionView>
+                    </DateField>
+                  </Column>
+                </Row>
               </div>
               <div className={styles.buttonWrapper}>
                 <Button size={'large'} disabled={submitting}>

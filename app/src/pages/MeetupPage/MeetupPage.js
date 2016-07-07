@@ -24,7 +24,6 @@ class MeetupPage extends Component {
   constructor(props) {
     super(props);
     this.handleAddMeetup = this.handleAddMeetup.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.state = {
       isAddingMeetup: false
     };
