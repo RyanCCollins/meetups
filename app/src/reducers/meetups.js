@@ -15,6 +15,25 @@ const meetups = (state = {
         isFetching: false,
         data: action.payload
       });
+    case `${T.GET_MEETUPS}_REJECTED`:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: action.payload
+      });
+    case `${T.GET_MEETUP}_PENDING`:
+      return Object.assign({}, state, {
+        isFetching: true
+      });
+    case `${T.GET_MEETUP}_FULFILLED`:
+      return Object.assign({}, state, {
+        isFetching: false,
+        data: [...state.data, action.payload]
+      });
+    case `${T.GET_MEETUP}_REJECTED`:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: action.payload
+      });
     case `${T.CREATE_MEETUP}_PENDING`:
       return Object.assign({}, state, {
         isFetching: true

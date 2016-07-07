@@ -5,35 +5,19 @@
 import * as T from '../constants/meetups';
 import Network from '../utils/network';
 
-const getMeetups = () => ({
+export const getMeetups = () => ({
   type: T.GET_MEETUPS,
-  payload: Network.get({
-    resource: 'meetups'
-  })
+  payload: Network.getAll('meetups')
 });
 
-const getMeetup = (id) => ({
+export const getMeetup = (id) => ({
   type: T.GET_MEETUP,
-  payload: Network.get({
-    resource: 'meetups',
-    id
-  })
+  payload: Network.getOne('meetups', id)
 });
 
-const createMeetup = (data) => ({
+export const createMeetup = (data) => ({
   type: T.CREATE_MEETUP,
   payload: {
-    promise: Network.post({
-      delay: 1000,
-      resource: 'meetups',
-      body: data
-    }),
-    data
+    promise: Network.post('meetups', data)
   }
 });
-
-export {
-  createMeetup,
-  getMeetup,
-  getMeetups
-};
