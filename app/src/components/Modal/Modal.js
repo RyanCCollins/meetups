@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Modal.module.scss';
+import cssModules from 'react-css-modules';
 import BoronModal from 'boron/OutLineModal';
 
 class Modal extends Component {
@@ -37,6 +38,11 @@ class Modal extends Component {
         ref="modal"
       >
         <div className={styles.modal}>
+          <button
+            id="button-close-messages-panel"
+            className={styles.btnClose}
+            onClick={this.handleClose}
+          >✕</button>
           {children}
         </div>
       </BoronModal>
@@ -49,4 +55,4 @@ Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired
 };
 
-export default Modal;
+export default cssModules(Modal, styles);

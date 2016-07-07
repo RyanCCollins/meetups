@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import styles from './AddMeetup.module.scss';
 import cssModules from 'react-css-modules';
 import { reduxForm } from 'redux-form';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import {
   FormInputField,
   SelectField
@@ -12,16 +14,17 @@ import {
   Button
 } from 'react-foundation';
 
-const partOptions = [
+
+const defaultSelectOptions = [
   {
     id: 0,
     name: 'Coding Meetup',
-    value: 'meetup'
+    value: 'coding-meetup'
   },
   {
     id: 1,
     name: 'Work Gathering',
-    value: 'work'
+    value: 'work-gathering'
   },
   {
     id: 2,
@@ -31,7 +34,7 @@ const partOptions = [
   {
     id: 3,
     name: 'Conference Talk',
-    value: 'conference'
+    value: 'conference-talk'
   },
   {
     id: 4,
@@ -51,7 +54,8 @@ const fields = [
   'hostInput',
   'startDateInput',
   'endDateInput',
-  'guestsInput'
+  'guestsInput',
+  'locationInput'
 ];
 
 class AddMeetup extends Component {
@@ -63,6 +67,18 @@ class AddMeetup extends Component {
     this.state = {
       hasErrors: errors.length > 0
     };
+    this.formatAsDate = this.formatAsDate.bind(this);
+    this.handleStartDateChange = this.handleStartDateChange.bind(this);
+    this.handleEndDateChange = this.handleEndDateChange.bind(this);
+  }
+  formatAsDate(string) {
+    return moment(string).format('DD/MM/YYYY');
+  }
+  handleStartDateChange(event) {
+    console.log(`Changing start date to: ${event}`)
+  }
+  handleEndDateChange(event) {
+    console.log(`Changing end date to: ${event}`)
   }
   render() {
     const {
@@ -72,7 +88,8 @@ class AddMeetup extends Component {
         hostInput,
         startDateInput,
         endDateInput,
-        guestsInput
+        guestsInput,
+        locationInput
       },
       resetForm,
       handleSubmit,
@@ -96,22 +113,42 @@ class AddMeetup extends Component {
                 field={nameInput}
                 labelText="Name of Event"
               />
-              <SelectField options={} {...typeInput} />
+              <SelectField
+                {...typeInput}
+                options={defaultSelectOptions}
+              />
               <FormInputField
                 {...typeInput}
                 field={nameInput}
                 labelText="Name of Event"
               />
               <FormInputField
-                {...nameInput}
-                field={nameInput}
-                labelText="Name of Event"
+                {...hostInput}
+                field={hostInput}
+                labelText="Who's Hosting the Event?"
               />
-              <FormInputField
-                {...nameInput}
-                field={nameInput}
-                labelText="Name of Event"
-              />
+              <div className="form-group">
+                <DatePicker
+                  {...startDateInput}
+                  dateFormat="DD/MM/YYYY"
+                  placeholderText="Click to select a start date"
+                  selected={moment()}
+                  startDate={moment()}
+                  endDate={moment()}
+                  onChange={this.handleStartDateChange}
+                />
+              </div>
+              <div className="form-group">
+                <DatePicker
+                  {...endDateInput}
+                  dateFormat="DD/MM/YYYY"
+                  placeholderText="Click to select an end date"
+                  selected={moment()}
+                  startDate={moment()}
+                  endDate={moment()}
+                  onChange={this.handleEndDateChange}
+                />
+              </div>
               <div className={styles.buttonWrapper}>
                 <Button size={'large'} disabled={submitting}>
                   Submit
