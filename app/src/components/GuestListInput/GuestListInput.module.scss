@@ -4,5 +4,10 @@
 
 .addButton {
   position: absolute;
+  right: 14px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 11;
+  color: #6e6e6e;
   font-size: 2rem;
 }

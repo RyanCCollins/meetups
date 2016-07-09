@@ -3,7 +3,8 @@ import * as T from '../constants/meetups';
 const meetups = (state = {
   isFetching: false,
   data: [],
-  error: null
+  error: null,
+  selectedMeetup: {}
 }, action) => {
   switch (action.type) {
     case `${T.GET_MEETUPS}_PENDING`:

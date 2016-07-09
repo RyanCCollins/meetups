@@ -7,6 +7,7 @@ const initalState = {
     selectedMeetup: {},
     errors: null
   },
+  guestsList: [],
   messages: {
     alertVisible: false,
     user: [],

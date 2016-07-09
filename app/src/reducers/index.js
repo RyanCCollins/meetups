@@ -8,6 +8,7 @@ import errors from './errors';
 import messages from './messages';
 import user from './user';
 import meetups from './meetups';
+import guestsList from './guestsList';
 
 const rootReducer = combineReducers({
   // Apply all of the reducers here.
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   messages,
   user,
   meetups,
+  guestsList,
   routing: routerReducer,
   form: formReducer,
   toastr: toastrReducer
