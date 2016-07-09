@@ -8,10 +8,14 @@ class GuestListInput extends React.Component {
     super(props)
     this.handleAddingGuest = this.handleAddingGuest.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      guestToBeAdded: null
+    };
   }
   handleAddingGuest(e) {
     e.preventDefault();
-    console.log(e.target.value);
+    console.log(`Adding new guest: ${e.target.value}`);
+    const guestToBeAdded = e.target.value;
     this.setState({
       guestToBeAdded
     });
@@ -24,7 +28,7 @@ class GuestListInput extends React.Component {
       guestToBeAdded
     } = this.state;
     if (guestToBeAdded !== null) {
-      onAddGuest(guestToBeAdded)
+      onAddGuest(guestToBeAdded);
     }
   }
   render() {
