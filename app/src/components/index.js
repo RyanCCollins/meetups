@@ -16,6 +16,8 @@ import FormButtonGroup from './FormButtonGroup/FormButtonGroup';
 import Modal from './Modal/Modal';
 import SelectField from './SelectField/SelectField';
 import GuestListInput from './GuestListInput/GuestListInput';
+import GuestsList from './GuestsList/GuestsList';
+import GuestsListItem from './GuestsListItem/GuestsListItem';
 
 export {
   SectionHeader,
@@ -30,5 +32,7 @@ export {
   FormButtonGroup,
   Modal,
   SelectField,
-  GuestListInput
+  GuestListInput,
+  GuestsList,
+  GuestsListItem
 };

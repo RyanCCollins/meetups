@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { GuestListInput } from 'components';
-import { MdClear } from 'react-icons/lib/md';
+import { GuestListInput, GuestsList } from 'components';
 import styles from './GuestList.module.scss';
 import cssModules from 'react-css-modules';
 import { connect } from 'react-redux';
@@ -10,29 +9,8 @@ import {
   removeGuest
 } from 'actions/guestsList';
 
-const GuestsList = ({
-  guests,
-  handleDeleteGuest
-}) => (
-  <div className={styles.guestsList}>
-    <ul className="no-bullet">
-    {guests.map((guest) =>
-      <li>
-        <p>{guest.name}</p>
-        <MdClear onClick={handleDeleteGuest} />
-      </li>
-    )}
-    </ul>
-  </div>
-);
-
-GuestsList.propTypes = {
-  guests: PropTypes.array,
-  handleDeleteGuest: PropTypes.func.isRequired
-};
-
 class GuestList extends Component {
-  constuctor(props) {
+  constructor(props) {
     super(props);
     this.handleAddGuest = this.handleAddGuest.bind(this);
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this);
@@ -78,9 +56,9 @@ const mapStateToProps = (state) => ({
   guests: state.guestsList
 });
 
-const smartComponent = connect(
+const SmartComponent = connect(
   mapStateToProps,
   mapDispatchToProps
 )(GuestList);
 
-export default cssModules(smartComponent, styles);
+export default cssModules(SmartComponent, styles);

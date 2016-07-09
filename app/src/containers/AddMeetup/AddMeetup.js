@@ -7,9 +7,9 @@ import 'react-date-picker/index.css';
 import moment from 'moment';
 import {
   FormInputField,
-  SelectField,
-  GuestList
+  SelectField
 } from 'components';
+import { GuestList } from 'containers';
 import {
   Row,
   Column,
