@@ -3,11 +3,28 @@ import styles from './Modal.module.scss';
 import cssModules from 'react-css-modules';
 import BoronModal from 'boron/OutLineModal';
 
+// Individual styles for the modal, modal content, and backdrop
+const modalStyle = {
+  width: '80%',
+};
+
+const backdropStyle = {
+  backgroundColor: '#525c65'
+};
+
+const contentStyle = {
+  backgroundColor: '#def0fc',
+  height: '100%'
+};
+
 class Modal extends Component {
   constructor(props) {
     super(props);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.state = {
+      canClose: true
+    };
   }
   componentDidMount() {
     const {
@@ -26,16 +43,24 @@ class Modal extends Component {
     this.refs.modal.show();
   }
   handleClose() {
-    this.refs.modal.hide();
+    const { canClose } = this.state;
+    if (canClose) {
+      this.refs.modal.hide();
+    }
   }
   render() {
     const {
-      children
+      children,
+      shouldCloseModalOnClick
     } = this.props;
     return (
       <BoronModal
-        closeOnClick
+        closeOnClick={shouldCloseModalOnClick}
+        modalStyle={modalStyle}
+        backdropStyle={backdropStyle}
+        contentStyle={contentStyle}
         ref="modal"
+        className={styles.formGroup}
       >
         <div className={styles.modal}>
           <button
@@ -52,7 +77,8 @@ class Modal extends Component {
 
 Modal.propTypes = {
   children: React.children,
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool.isRequired,
+  shouldCloseModalOnClick: PropTypes.bool.isRequired
 };
 
 export default cssModules(Modal, styles);

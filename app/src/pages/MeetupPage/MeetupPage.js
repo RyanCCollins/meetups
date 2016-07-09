@@ -25,7 +25,8 @@ class MeetupPage extends Component {
     super(props);
     this.handleAddMeetup = this.handleAddMeetup.bind(this);
     this.state = {
-      isAddingMeetup: false
+      isAddingMeetup: false,
+      shouldCloseModalOnClick: false
     };
   }
   componentDidMount() {
@@ -33,6 +34,11 @@ class MeetupPage extends Component {
       getMeetupsList
     } = this.props;
     getMeetupsList();
+  }
+  handleEditDates() {
+    this.setState({
+      shouldCloseModalOnClick: true
+    });
   }
   handleAddMeetup() {
     this.setState({ isAddingMeetup: true });
@@ -57,6 +63,7 @@ class MeetupPage extends Component {
           </MeetupPanel>
           <Modal
             isOpen={this.state.isAddingMeetup || false}
+            shouldCloseOnClick={this.state.shouldCloseModalOnClick}
           >
             <AddMeetup />
           </Modal>

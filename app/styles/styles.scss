@@ -226,3 +226,20 @@ hr.section-divider:before {
     width: 1000px;
   }
 }
+
+.floating-label {
+  position: relative;
+}
+
+.floating-label label {
+  color: #7d97ad!important;
+  font-size: 12px;
+  letter-spacing: 1px;
+  left: 24px;
+  margin-bottom: 0;
+  position: absolute;
+  text-transform: uppercase;
+  top: 16px;
+  line-height: 20px;
+  z-index: 11;
+}

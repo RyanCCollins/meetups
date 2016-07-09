@@ -31,3 +31,25 @@
   right: 10px;
   font-size: 25px;
 }
+
+.formGroup input[type=number],
+  .formGroup input[type=password],
+  .formGroup input[type=search],
+  .formGroup input[type=text],
+  .formGroup input[type=url],
+  .formGroup textarea {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  color: #7d97ad;
+  padding: .8em 1em .85em;
+  border-radius: .142857143em;
+  border: 1px solid #dbe2e8;
+  outline: 0;
+  box-shadow: 0 .125em .5em 0 rgba(46,61,73,.06);
+  transition: box-shadow .3s ease,border .3s ease;
+  padding-left: 124px;
+  position: relative;
+  z-index: 1;
+  height: 50px;
+}

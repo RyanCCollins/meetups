@@ -15,6 +15,7 @@ import MeetupPanel from './MeetupPanel/MeetupPanel';
 import FormButtonGroup from './FormButtonGroup/FormButtonGroup';
 import Modal from './Modal/Modal';
 import SelectField from './SelectField/SelectField';
+import GuestList from './GuestList/GuestList';
 
 export {
   SectionHeader,
@@ -28,5 +29,6 @@ export {
   MeetupPanel,
   FormButtonGroup,
   Modal,
-  SelectField
+  SelectField,
+  GuestList
 };

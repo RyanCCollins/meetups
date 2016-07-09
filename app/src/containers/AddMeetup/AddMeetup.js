@@ -7,7 +7,8 @@ import 'react-date-picker/index.css';
 import moment from 'moment';
 import {
   FormInputField,
-  SelectField
+  SelectField,
+  GuestList
 } from 'components';
 import {
   Row,
@@ -112,7 +113,8 @@ class AddMeetup extends Component {
               <FormInputField
                 {...nameInput}
                 field={nameInput}
-                labelText="Name of Event"
+                labelText="Name"
+                placeholder="The name of the event"
               />
               <SelectField
                 {...typeInput}
@@ -121,10 +123,11 @@ class AddMeetup extends Component {
               <FormInputField
                 {...hostInput}
                 field={hostInput}
-                labelText="Who's Hosting the Event?"
+                labelText="Host"
+                placeholder="Who is hosting?"
               />
+              <GuestList />
               <div className="form-group">
-
                 <Row>
                   <Column large={6}>
                     <label htmlFor="start-date-input">Start Date</label>
