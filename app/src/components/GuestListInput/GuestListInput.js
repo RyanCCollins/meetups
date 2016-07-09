@@ -8,9 +8,17 @@ class GuestListInput extends React.Component {
     super(props)
     this.handleAddingGuest = this.handleAddingGuest.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.state = {
       guestToBeAdded: null
     };
+  }
+  handleKeyPress(e) {
+    e.preventDefault();
+    console.log(`Pressed handle add guest with key: ${e.key}`)
+    if (e.key === 'enter') {
+      this.handleAddingGuest(e);
+    }
   }
   handleAddingGuest(e) {
     e.preventDefault();
@@ -38,7 +46,9 @@ class GuestListInput extends React.Component {
           <label htmlFor="guest-input">Guests</label>
           <div className={styles.floatingButton}>
             <input
+              {...this.props.guestsInput}
               ref="guestInput"
+              onKeyPress={this.handleKeyPress}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"
@@ -55,7 +65,8 @@ class GuestListInput extends React.Component {
 }
 
 GuestListInput.propTypes = {
-  onAddGuest: PropTypes.func.isRequired
+  onAddGuest: PropTypes.func.isRequired,
+  guestsInput: PropTypes.object.isRequired
 };
 
 export default cssModules(GuestListInput, styles);

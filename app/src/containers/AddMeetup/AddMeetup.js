@@ -126,7 +126,9 @@ class AddMeetup extends Component {
                 labelText="Host"
                 placeholder="Who is hosting?"
               />
-              <GuestList />
+              <GuestList
+                {...guestsInput}
+              />
               <div className="form-group">
                 <Row>
                   <Column large={6}>
