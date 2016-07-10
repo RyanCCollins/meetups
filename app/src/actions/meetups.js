@@ -35,3 +35,13 @@ export const updateMeetup = (id, data) => ({
     promise: Network.update('meetups', id, data)
   }
 });
+
+/* Temporary data before submitting to api */
+export const addLocation = (location) => ({
+  type: T.ADD_LOCATION,
+  location
+});
+
+export const removeLocation = () => ({
+  type: T.REMOVE_LOCATION
+});
