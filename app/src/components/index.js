@@ -18,6 +18,7 @@ import SelectField from './SelectField/SelectField';
 import GuestListInput from './GuestListInput/GuestListInput';
 import GuestsList from './GuestsList/GuestsList';
 import GuestsListItem from './GuestsListItem/GuestsListItem';
+import LocationInput from './LocationInput/LocationInput';
 
 export {
   SectionHeader,
@@ -34,5 +35,6 @@ export {
   SelectField,
   GuestListInput,
   GuestsList,
-  GuestsListItem
+  GuestsListItem,
+  LocationInput
 };

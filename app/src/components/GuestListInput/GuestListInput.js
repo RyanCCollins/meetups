@@ -27,7 +27,6 @@ class GuestListInput extends React.Component {
       undefined;
   }
   handleSubmit() {
-    console.log(`Clicked handle submit`)
     const {
       onAddGuest
     } = this.props;
@@ -35,6 +34,7 @@ class GuestListInput extends React.Component {
       guestToBeAdded
     } = this.state;
     if (guestToBeAdded !== null) {
+      this.setState({ guestToBeAdded: '' });
       onAddGuest(guestToBeAdded);
     }
   }

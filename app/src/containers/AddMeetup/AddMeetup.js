@@ -7,7 +7,8 @@ import 'react-date-picker/index.css';
 import moment from 'moment';
 import {
   FormInputField,
-  SelectField
+  SelectField,
+  LocationInput
 } from 'components';
 import { GuestList } from 'containers';
 import {
@@ -72,6 +73,7 @@ class AddMeetup extends Component {
     this.formatAsDate = this.formatAsDate.bind(this);
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+    this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
   }
   formatAsDate(string) {
     return moment(string).format('DD/MM/YYYY');
@@ -81,6 +83,9 @@ class AddMeetup extends Component {
   }
   handleEndDateChange(event) {
     console.log(`Changing end date to: ${event}`)
+  }
+  handleSuggestSelect(value) {
+    console.log(`Got a value ${value}`);
   }
   render() {
     const {
@@ -129,6 +134,7 @@ class AddMeetup extends Component {
               <GuestList
                 {...guestsInput}
               />
+              <LocationInput onSuggestSelect={this.handleSuggestSelect} />
               <div className="form-group">
                 <Row>
                   <Column large={6}>
