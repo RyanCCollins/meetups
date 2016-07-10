@@ -10,20 +10,21 @@ class GuestListInput extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.state = {
-      guestToBeAdded: null
+      guestToBeAdded: ''
     };
   }
   handleKeyPress(e) {
-    e.preventDefault();
-    return e.key.toLowerCase() == 'enter' ?
-      this.handleSubmit() : undefined;
+    if (e.key.toLowerCase() == 'enter') {
+      e.preventDefault();
+      this.handleSubmit()
+    }
   }
   handleAddingGuest(e) {
     e.preventDefault();
     const guestToBeAdded = e.target.value;
-    this.setState({
-      guestToBeAdded
-    });
+    return guestToBeAdded.length > 0 ?
+      this.setState({ guestToBeAdded }) :
+      undefined;
   }
   handleSubmit() {
     console.log(`Clicked handle submit`)
@@ -38,17 +39,19 @@ class GuestListInput extends React.Component {
     }
   }
   render() {
+    const {
+      guestToBeAdded
+    } = this.state;
     return (
       <div className="form-group">
         <div className="floating-label">
           <label htmlFor="guest-input">Guests</label>
           <div className={styles.floatingButton}>
             <input
-              {...this.props.guestsInput}
               ref="guestInput"
               onKeyPress={this.handleKeyPress}
               onChange={this.handleAddingGuest}
-              value={this.state.guestToBeAdded}
+              value={guestToBeAdded}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"
