@@ -15,20 +15,18 @@ class GuestListInput extends React.Component {
   }
   handleKeyPress(e) {
     e.preventDefault();
-    console.log(`Pressed handle add guest with key: ${e.key}`)
-    if (e.key === 'enter') {
-      this.handleAddingGuest(e);
-    }
+    return e.key.toLowerCase() == 'enter' ?
+      this.handleSubmit() : undefined;
   }
   handleAddingGuest(e) {
     e.preventDefault();
-    console.log(`Adding new guest: ${e.target.value}`);
     const guestToBeAdded = e.target.value;
     this.setState({
       guestToBeAdded
     });
   }
   handleSubmit() {
+    console.log(`Clicked handle submit`)
     const {
       onAddGuest
     } = this.props;

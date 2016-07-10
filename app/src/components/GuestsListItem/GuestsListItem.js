@@ -15,7 +15,7 @@ const GuestsListItem = ({
 );
 
 GuestsListItem.propTypes = {
-  guest: PropTypes.object.isRequired,
+  guest: PropTypes.string.isRequired,
   i: PropTypes.number.isRequired,
   onDeleteGuest: PropTypes.func.isRequired
 };
