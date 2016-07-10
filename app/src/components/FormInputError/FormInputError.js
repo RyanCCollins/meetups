@@ -3,7 +3,7 @@ import React from 'react';
 const FormInputError = ({
   input
 }) => (
-  <span id={`${input.name}Error`} className="error">
+  <span id={`${input.name}-error`} className="error">
     {input.error}
   </span>
 );

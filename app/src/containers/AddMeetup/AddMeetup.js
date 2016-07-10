@@ -58,7 +58,9 @@ const fields = [
   'startDateInput',
   'endDateInput',
   'guestsInput',
-  'locationInput'
+  'locationInput',
+  'locationLatInput',
+  'locationLongInput'
 ];
 
 class AddMeetup extends Component {
@@ -96,7 +98,9 @@ class AddMeetup extends Component {
         startDateInput,
         endDateInput,
         guestsInput,
-        locationInput
+        locationInput,
+        locationLatInput,
+        locationLongInput
       },
       resetForm,
       handleSubmit,
@@ -134,7 +138,12 @@ class AddMeetup extends Component {
               <GuestList
                 {...guestsInput}
               />
-              <LocationInput onSuggestSelect={this.handleSuggestSelect} />
+              <LocationInput
+                {...locationInput}
+                {...locationLatInput}
+                {...locationLongInput}
+                onSuggestSelect={this.handleSuggestSelect}
+              />
               <div className="form-group">
                 <Row>
                   <Column large={6}>

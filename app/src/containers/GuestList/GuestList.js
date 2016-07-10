@@ -30,11 +30,15 @@ class GuestList extends Component {
   }
   render() {
     const {
-      guests
+      guests,
+      guestsInput
     } = this.props;
     return (
       <div>
-        <GuestListInput onAddGuest={this.handleAddGuest} />
+        <GuestListInput
+          {...guestsInput}
+          onAddGuest={this.handleAddGuest}
+        />
         <GuestsList guests={guests} onDeleteGuestItem={this.handleDeleteGuest} />
       </div>
     );

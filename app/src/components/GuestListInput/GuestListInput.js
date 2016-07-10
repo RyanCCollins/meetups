@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { MdAdd } from 'react-icons/lib/md';
 import styles from './GuestListInput.module.scss';
 import cssModules from 'react-css-modules';
+import { FormInputError } from 'components';
+import { inputHasError } from '../../utils/misc';
 
 class GuestListInput extends React.Component {
   constructor(props) {
@@ -16,12 +18,15 @@ class GuestListInput extends React.Component {
   handleKeyPress(e) {
     if (e.key.toLowerCase() == 'enter') {
       e.preventDefault();
-      this.handleSubmit()
+      this.handleSubmit();
     }
   }
   handleAddingGuest(e) {
+    const {
+      guestsInput
+    } = this.props;
     e.preventDefault();
-    const guestToBeAdded = e.target.value;
+    const guestToBeAdded = guestsInput.value;
     return guestToBeAdded.length > 0 ?
       this.setState({ guestToBeAdded }) :
       undefined;
@@ -31,27 +36,28 @@ class GuestListInput extends React.Component {
       onAddGuest
     } = this.props;
     const {
-      guestToBeAdded
-    } = this.state;
+      guestsInput
+    } = this.props;
     if (guestToBeAdded !== null) {
       this.setState({ guestToBeAdded: '' });
-      onAddGuest(guestToBeAdded);
+      onAddGuest(guestsInput.value);
     }
   }
   render() {
     const {
-      guestToBeAdded
-    } = this.state;
+      guestsInput
+    } = this.props;
     return (
       <div className="form-group">
         <div className="floating-label">
           <label htmlFor="guest-input">Guests</label>
           <div className={styles.floatingButton}>
             <input
+              {...guestsInput}
               ref="guestInput"
               onKeyPress={this.handleKeyPress}
               onChange={this.handleAddingGuest}
-              value={guestToBeAdded}
+              value={guestsInput.value}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"
@@ -62,6 +68,9 @@ class GuestListInput extends React.Component {
             />
           </div>
         </div>
+        {inputHasError(guestsInput) &&
+          <FormInputError input={guestsInput} />
+        }
       </div>
     );
   }

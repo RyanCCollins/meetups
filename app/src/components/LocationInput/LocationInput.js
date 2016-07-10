@@ -1,8 +1,12 @@
 import React, { PropTypes } from 'react';
 import GeoSuggest from 'react-geosuggest';
+import { FormInputError } from 'components';
+import { inputHasError } from '../../utils/misc';
 
 const LocationInput = ({
-  meetup,
+  locationInput,
+  locationLatInput,
+  locationLongInput,
   onSuggestSelect
 }) => (
   <div className="form-group">
@@ -11,16 +15,24 @@ const LocationInput = ({
       <GeoSuggest
         placeholder="Start typing to select an event location"
         country="USA"
-        location={meetup.lat && meetup.lng && new google.maps.LatLng(meetup.lat, meetup.lng)}
+        value={locationInput.value}
         id="location-input"
+        aria-invalde={locationInput.error}
         onSuggestSelect={onSuggestSelect}
       />
+      <input {...locationLatInput} type="hidden" value={locationLatInput.value} />
+      <input {...locationLongInput} type="hidden" value={locationLongInput.value} />
     </div>
+    {inputHasError(locationInput) &&
+      <FormInputError input={locationInput} />
+    }
   </div>
 );
 
 LocationInput.propTypes = {
-  meetup: PropTypes.object,
+  locationInput: PropTypes.object.isRequired,
+  locationLongInput: PropTypes.object.isRequired,
+  locationLatInput: PropTypes.object.isRequired,
   onSuggestSelect: PropTypes.func.isRequired
 };
 
