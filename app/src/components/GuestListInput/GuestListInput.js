@@ -49,6 +49,8 @@ class GuestListInput extends React.Component {
               {...this.props.guestsInput}
               ref="guestInput"
               onKeyPress={this.handleKeyPress}
+              onChange={this.handleAddingGuest}
+              value={this.state.guestToBeAdded}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"

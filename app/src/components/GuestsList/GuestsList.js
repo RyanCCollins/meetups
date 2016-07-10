@@ -19,6 +19,7 @@ class GuestsList extends Component {
         <ul className="no-bullet">
           {guests.map((guest, i) =>
             <GuestsListItem
+              key={i}
               guest={guest}
               i={i}
               onDeleteGuest={this.handleDeleteItem.bind(this, i)}

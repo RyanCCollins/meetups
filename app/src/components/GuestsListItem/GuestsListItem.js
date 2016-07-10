@@ -8,8 +8,8 @@ const GuestsListItem = ({
   i,
   onDeleteGuest
 }) => (
-  <li key={i}>
-    <p>{guest.name}</p>
+  <li key={i} className={styles.listWrapper}>
+    <p className={styles.textWrapper}>{guest}</p>
     <MdClear className={styles.deleteButton} onClick={onDeleteGuest} />
   </li>
 );
