@@ -102,6 +102,7 @@
     "jsdom": "^7.2.0",
     "mocha": "^2.3.4",
     "npm-install-webpack-plugin": "^4.0.3",
+    "react-addons-test-utils": "^15.2.1",
     "react-css-modules": "^3.7.6",
     "react-hot-loader": "^1.3.0",
     "redux-devtools": "^3.0.1",
