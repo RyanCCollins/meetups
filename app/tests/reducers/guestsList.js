@@ -1,14 +1,35 @@
 import expect from 'expect';
-import * as actions from '../../src/actions/guestsList';
 import * as types from '../../src/constants/guestsList';
+import reducer from '../../src/reducers/guestsList';
 
-describe('actions', () => {
-  it('should create an action to add a guest to the guest list', () => {
-    const guest = 'Ryan';
-    const expectedAction = {
-      type: types.ADD_GUEST,
-      guest
-    };
-    expect(actions.addGuest(guest)).toEqual(expectedAction);
+describe('guestList reducer', () => {
+  it('should return an empty array (initial state)', () => {
+    expect(
+      reducer(undefined, {})
+    ).toEqual([]);
+  });
+
+  it('should add a guest to the guestList array', () => {
+    expect(
+      reducer([], {
+        type: types.ADD_GUEST,
+        guest: 'Ryan'
+      })
+    ).toEqual(
+      [
+        'Ryan'
+      ]
+    );
+  });
+  it('should remove the guest with the specified index from the guestList array', () => {
+    const stateBefore = ['Ryan', 'Bob', 'Ted'];
+    const stateAfter = ['Ryan', 'Ted'];
+    const index = 1;
+    expect(
+      reducer(stateBefore, {
+        type: types.REMOVE_GUEST,
+        index
+      })
+    ).toEqual(stateAfter);
   });
 });

@@ -5,7 +5,7 @@ export const addGuest = (guest) => ({
   guest
 });
 
-export const removeGuest = (id) => ({
+export const removeGuest = (index) => ({
   type: T.REMOVE_GUEST,
-  id
+  index
 });
