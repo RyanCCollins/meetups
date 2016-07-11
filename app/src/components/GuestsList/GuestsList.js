@@ -21,7 +21,6 @@ class GuestsList extends Component {
             <GuestsListItem
               key={i}
               guest={guest}
-              i={i}
               onDeleteGuest={this.handleDeleteItem.bind(this, i)}
             />
           )}

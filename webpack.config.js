@@ -4,6 +4,12 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname);
 
+const env = process.env.NODE_ENV || 'development';
+const PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0'; // Set to localhost if need be.
+const URL = `http://${HOST}:${PORT}`
+
+
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: [
@@ -89,13 +95,16 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    progress: true
+    progress: true,
+    // Set the host and port of the server
+    host: HOST,
+    port: PORT
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new NpmInstallPlugin(),
     new HtmlwebpackPlugin({
-      title: 'React Redux Simple Starter',
+      title: 'Meetup Event Planner',
       template: 'index.html'
     })
   ]

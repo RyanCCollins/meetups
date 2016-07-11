@@ -5,10 +5,9 @@ import cssModules from 'react-css-modules';
 
 const GuestsListItem = ({
   guest,
-  i,
   onDeleteGuest
 }) => (
-  <li key={i} className={styles.listWrapper}>
+  <li className={styles.listWrapper}>
     <p className={styles.textWrapper}>{guest}</p>
     <MdClear className={styles.deleteButton} onClick={onDeleteGuest} />
   </li>
@@ -16,7 +15,6 @@ const GuestsListItem = ({
 
 GuestsListItem.propTypes = {
   guest: PropTypes.string.isRequired,
-  i: PropTypes.number.isRequired,
   onDeleteGuest: PropTypes.func.isRequired
 };
 
