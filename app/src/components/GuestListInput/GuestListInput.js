@@ -8,8 +8,6 @@ import { inputHasError } from '../../utils/misc';
 class GuestListInput extends React.Component {
   constructor(props) {
     super(props);
-    this.handleAddingGuest = this.handleAddingGuest.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.state = {
       guestToBeAdded: ''
@@ -19,28 +17,6 @@ class GuestListInput extends React.Component {
     if (e.key.toLowerCase() == 'enter') {
       e.preventDefault();
       this.handleSubmit();
-    }
-  }
-  handleAddingGuest(e) {
-    const {
-      guestsInput
-    } = this.props;
-    e.preventDefault();
-    const guestToBeAdded = guestsInput.value;
-    return guestToBeAdded.length > 0 ?
-      this.setState({ guestToBeAdded }) :
-      undefined;
-  }
-  handleSubmit() {
-    const {
-      onAddGuest
-    } = this.props;
-    const {
-      field
-    } = this.props;
-    if (field.value !== null) {
-      this.setState({ guestToBeAdded: '' });
-      onAddGuest(field.value);
     }
   }
   render() {
@@ -53,9 +29,9 @@ class GuestListInput extends React.Component {
           <label htmlFor="guest-input">Guests</label>
           <div className={styles.floatingButton}>
             <input
+              {...field}
               ref="guestInput"
               onKeyPress={this.handleKeyPress}
-              onChange={this.handleAddingGuest}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"
@@ -76,7 +52,7 @@ class GuestListInput extends React.Component {
 
 GuestListInput.propTypes = {
   onAddGuest: PropTypes.func.isRequired,
-  field: PropTypes.object.isRequired,
+  field: PropTypes.object.isRequired
 };
 
 export default cssModules(GuestListInput, styles);

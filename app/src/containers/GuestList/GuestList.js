@@ -16,7 +16,6 @@ class GuestList extends Component {
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this);
   }
   handleAddGuest(guest) {
-    console.log(`Called handle add guest with ${guest}`)
     const {
       addGuestToList
     } = this.props;
@@ -31,12 +30,12 @@ class GuestList extends Component {
   render() {
     const {
       guests,
-      guestsInput
+      field
     } = this.props;
     return (
       <div>
         <GuestListInput
-          {...guestsInput}
+          field={field}
           onAddGuest={this.handleAddGuest}
         />
         <GuestsList guests={guests} onDeleteGuestItem={this.handleDeleteGuest} />
@@ -49,7 +48,7 @@ GuestList.propTypes = {
   guests: PropTypes.array.isRequired,
   addGuestToList: PropTypes.func.isRequired,
   removeGuestFromList: PropTypes.func.isRequired,
-  guestsInput: PropTypes.object
+  field: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = (dispatch) =>
@@ -59,8 +58,7 @@ const mapDispatchToProps = (dispatch) =>
   }, dispatch);
 
 const mapStateToProps = (state) => ({
-  guests: state.guestsList,
-  guestsInput: PropTypes.object.isRequired
+  guests: state.guestsList
 });
 
 const SmartComponent = connect(
