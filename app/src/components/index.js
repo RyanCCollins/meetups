@@ -19,6 +19,7 @@ import GuestListInput from './GuestListInput/GuestListInput';
 import GuestsList from './GuestsList/GuestsList';
 import GuestsListItem from './GuestsListItem/GuestsListItem';
 import LocationInput from './LocationInput/LocationInput';
+import InfoPanel from './InfoPanel/InfoPanel';
 
 export {
   SectionHeader,
@@ -36,5 +37,6 @@ export {
   GuestListInput,
   GuestsList,
   GuestsListItem,
-  LocationInput
+  LocationInput,
+  InfoPanel
 };

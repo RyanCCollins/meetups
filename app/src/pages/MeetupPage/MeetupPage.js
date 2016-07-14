@@ -54,8 +54,8 @@ class MeetupPage extends Component {
           <BackButton />
           <SectionHeader header="Meetups" />
           <MeetupPanel
-            onAddMeetup={this.handleAddMeetup}
             {...this.props}
+            onAddMeetup={this.handleAddMeetup}
           >
             <MeetupList
               meetups={meetups.data || null}

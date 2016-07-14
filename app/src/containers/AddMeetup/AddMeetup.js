@@ -137,12 +137,12 @@ class AddMeetup extends Component {
               />
               <GuestList
                 {...guestsInput}
+                field={guestsInput}
               />
               <LocationInput
                 {...locationInput}
-                {...locationLatInput}
-                {...locationLongInput}
                 onSuggestSelect={this.handleSuggestSelect}
+                field={locationInput}
               />
               <div className="form-group">
                 <Row>
@@ -157,7 +157,7 @@ class AddMeetup extends Component {
                       dateFormat="YYYY-MM-DD HH:mm:ss"
                     >
                       <TransitionView>
-                        <Calendar style={{padding: 10}} />
+                        <Calendar style={{ padding: 10 }} />
                       </TransitionView>
                     </DateField>
                   </Column>
@@ -171,7 +171,7 @@ class AddMeetup extends Component {
                       dateFormat="YYYY-MM-DD HH:mm:ss"
                     >
                       <TransitionView>
-                        <Calendar style={{padding: 10}}/>
+                        <Calendar style={{ padding: 10 }} />
                       </TransitionView>
                     </DateField>
                   </Column>
@@ -197,8 +197,9 @@ AddMeetup.propTypes = {
   submitting: PropTypes.bool.isRequired,
   errors: PropTypes.array
 };
+const StyledComponent = cssModules(AddMeetup, styles);
 
 export default reduxForm({
   form: 'addMeetup',
   fields
-})(cssModules(AddMeetup, styles));
+})(StyledComponent);

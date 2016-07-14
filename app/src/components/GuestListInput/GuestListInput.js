@@ -7,7 +7,7 @@ import { inputHasError } from '../../utils/misc';
 
 class GuestListInput extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.handleAddingGuest = this.handleAddingGuest.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -36,16 +36,16 @@ class GuestListInput extends React.Component {
       onAddGuest
     } = this.props;
     const {
-      guestsInput
+      field
     } = this.props;
-    if (guestToBeAdded !== null) {
+    if (field.value !== null) {
       this.setState({ guestToBeAdded: '' });
-      onAddGuest(guestsInput.value);
+      onAddGuest(field.value);
     }
   }
   render() {
     const {
-      guestsInput
+      field
     } = this.props;
     return (
       <div className="form-group">
@@ -53,11 +53,9 @@ class GuestListInput extends React.Component {
           <label htmlFor="guest-input">Guests</label>
           <div className={styles.floatingButton}>
             <input
-              {...guestsInput}
               ref="guestInput"
               onKeyPress={this.handleKeyPress}
               onChange={this.handleAddingGuest}
-              value={guestsInput.value}
               id="guest-input"
               type="text"
               placeholder="Start typing to add guests"
@@ -68,8 +66,8 @@ class GuestListInput extends React.Component {
             />
           </div>
         </div>
-        {inputHasError(guestsInput) &&
-          <FormInputError input={guestsInput} />
+        {inputHasError(field) &&
+          <FormInputError input={field} />
         }
       </div>
     );
@@ -78,7 +76,7 @@ class GuestListInput extends React.Component {
 
 GuestListInput.propTypes = {
   onAddGuest: PropTypes.func.isRequired,
-  guestsInput: PropTypes.object.isRequired
+  field: PropTypes.object.isRequired,
 };
 
 export default cssModules(GuestListInput, styles);

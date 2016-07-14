@@ -4,9 +4,7 @@ import { FormInputError } from 'components';
 import { inputHasError } from '../../utils/misc';
 
 const LocationInput = ({
-  locationInput,
-  locationLatInput,
-  locationLongInput,
+  field,
   onSuggestSelect
 }) => (
   <div className="form-group">
@@ -15,25 +13,21 @@ const LocationInput = ({
       <GeoSuggest
         placeholder="Start typing to select an event location"
         country="USA"
-        value={locationInput.value}
+        value={field.value}
         id="location-input"
-        aria-invalde={locationInput.error}
+        aria-invalde={field.error}
         onSuggestSelect={onSuggestSelect}
       />
-      <input {...locationLatInput} type="hidden" value={locationLatInput.value} />
-      <input {...locationLongInput} type="hidden" value={locationLongInput.value} />
     </div>
-    {inputHasError(locationInput) &&
-      <FormInputError input={locationInput} />
+    {inputHasError(field) &&
+      <FormInputError input={field} />
     }
   </div>
 );
 
 LocationInput.propTypes = {
-  locationInput: PropTypes.object.isRequired,
-  locationLongInput: PropTypes.object.isRequired,
-  locationLatInput: PropTypes.object.isRequired,
-  onSuggestSelect: PropTypes.func.isRequired
+  onSuggestSelect: PropTypes.func.isRequired,
+  field: PropTypes.object.isRequired
 };
 
 export default LocationInput;
