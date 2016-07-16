@@ -432,7 +432,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
 }
 
 .menu > li > span > a.active {
-  border-bottom: 2px solid #f54242;
+  border-bottom: 3px solid #f54242;
 }
 
 .menu > li > span > a.has-slash:after {
@@ -440,6 +440,6 @@ ol.progtrckr li.progtrckr-done:hover:before {
   font-size: 1.2rem;
   margin-left: 5px;
   margin-right: 5px;
-  border-bottom:0;
+  border-bottom: 0;
   color: black;
 }
