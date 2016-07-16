@@ -20,6 +20,8 @@ import GuestsList from './GuestsList/GuestsList';
 import GuestsListItem from './GuestsListItem/GuestsListItem';
 import LocationInput from './LocationInput/LocationInput';
 import InfoPanel from './InfoPanel/InfoPanel';
+import Navbar from './Navbar/Navbar';
+import MeetupLogo from './MeetupLogo/MeetupLogo';
 
 export {
   SectionHeader,
@@ -38,5 +40,7 @@ export {
   GuestsList,
   GuestsListItem,
   LocationInput,
-  InfoPanel
+  InfoPanel,
+  Navbar,
+  MeetupLogo
 };

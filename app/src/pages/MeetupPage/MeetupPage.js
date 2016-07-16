@@ -8,10 +8,8 @@ import {
   LoadingIndicator,
   BackButton,
   MeetupPanel,
-  MeetupList,
-  Modal
+  MeetupList
 } from '../../components';
-import { AddMeetup } from 'containers';
 import {
   getMeetups,
   getMeetup,
@@ -61,12 +59,6 @@ class MeetupPage extends Component {
               meetups={meetups.data || null}
             />
           </MeetupPanel>
-          <Modal
-            isOpen={this.state.isAddingMeetup || false}
-            shouldCloseOnClick={this.state.shouldCloseModalOnClick}
-          >
-            <AddMeetup />
-          </Modal>
         </div>
       </LoadingIndicator>
     );
