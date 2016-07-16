@@ -244,6 +244,28 @@ hr.section-divider:before {
   z-index: 11;
 }
 
+.floating-label input[type=number],
+  .floating-label input[type=password],
+  .floating-label input[type=search],
+  .floating-label input[type=text],
+  .floating-label input[type=url],
+  .floating-label textarea {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  color: #7d97ad;
+  padding: .8em 1em .85em;
+  border-radius: .142857143em;
+  border: 1px solid #dbe2e8;
+  outline: 0;
+  box-shadow: 0 .125em .5em 0 rgba(46,61,73,.06);
+  transition: box-shadow .3s ease,border .3s ease;
+  padding-left: 124px;
+  position: relative;
+  z-index: 1;
+  height: 50px;
+}
+
 .geosuggest {
   font-size: 18px;
   font-size: 1rem;
@@ -397,7 +419,9 @@ ol.progtrckr li.progtrckr-done:hover:before {
   color: #0FA0CE;
 }
 
-.menu > li > a {
+.menu > li > span > a {
+  text-transform: uppercase;
+  color: #f54242;
   @media screen and (max-width: 500px) {
     font-size: 0.8rem;
   }
@@ -407,6 +431,15 @@ ol.progtrckr li.progtrckr-done:hover:before {
   font-size: 1.2rem;
 }
 
-.menu > li > a.active {
-  border-bottom: 2px solid #990d98;
+.menu > li > span > a.active {
+  border-bottom: 2px solid #f54242;
+}
+
+.menu > li > span > a.has-slash:after {
+  content: '  /  ';
+  font-size: 1.2rem;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-bottom:0;
+  color: black;
 }

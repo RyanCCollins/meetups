@@ -13,6 +13,29 @@ import { MeetupLogo } from 'components';
 import Headroom from 'react-headroom';
 import styles from './Navbar.module.scss';
 import cssModules from 'react-css-modules';
+import { slide } from 'react-burger-menu';
+
+const NotAuthenticated = () => (
+  <Menu className={styles.menuCentered}>
+    <MenuItem>
+      <span>
+        <Link className="has-slash" to="/signin" activeClassName="active">Signin</Link>
+        <Link to="/signup" activeClassName="active">Signup</Link>
+      </span>
+    </MenuItem>
+  </Menu>
+);
+
+const Authenticated = () => (
+  <Menu className={styles.menuCentered}>
+    <MenuItem>
+      <Link to="/meetups" activeClassName="active">Meetups</Link>
+    </MenuItem>
+    <MenuItem>
+      <Link to="/profile" activeClassName="active">Profile</Link>
+    </MenuItem>
+  </Menu>
+);
 
 const Navbar = ({
   isSignedIn
@@ -27,17 +50,12 @@ const Navbar = ({
             </Link>
           </TopBarTitle>
           <TopBarRight className={styles.navbarRight}>
-            <Menu className={styles.menuCentered}>
-              <MenuItem>
-                <Link to="/portfolio">Portfolio</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/blog">Blog</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/services">Services</Link>
-              </MenuItem>
-            </Menu>
+            {isSignedIn ?
+              <Authenticated />
+            :
+              <NotAuthenticated />
+            }
+            <slide right />
           </TopBarRight>
         </Column>
       </Row>

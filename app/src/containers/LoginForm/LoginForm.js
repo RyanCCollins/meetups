@@ -55,7 +55,7 @@ class LoginForm extends Component {
           <Row>
             <Column
               small={12}
-              medium={6}
+              medium={8}
               large={6}
               className={styles.formContainer}
               isColumn
@@ -72,7 +72,7 @@ class LoginForm extends Component {
         <Row>
           <Column
             small={12}
-            medium={6}
+            medium={8}
             large={6}
             className={styles.formContainer}
             isColumn
@@ -84,7 +84,7 @@ class LoginForm extends Component {
               <FormInputField
                 {...emailInput}
                 field={emailInput}
-                labelText="Email Address"
+                labelText="Email"
               />
               <FormInputField
                 {...passwordInput}

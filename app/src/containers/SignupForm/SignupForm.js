@@ -124,34 +124,35 @@ class SignupForm extends Component {
                 labelText="Email Address"
               />
               <div className="form-group">
-                <label
-                  className={inputHasError(passwordInput) && 'error'}
-                  htmlFor="passwordInput"
-                >
-                  Password
-                </label>
-                <Popover isOpen={popoverOpen} preferPlace={'right'} body={<PasswordHint />}>
-                  <div></div>
-                </Popover>
-                <input
-                  {...passwordInput}
-                  type="password"
-                  name="password"
-                  id="passwordInput"
-                  className={inputHasError(passwordInput) && 'error'}
-                  aria-invalid={passwordInput.error !== null}
-                  placeholder="Password"
-                  onMouseEnter={this.onHoverPassword}
-                  onMouseLeave={this.onLeavePassword}
-                ></input>
-                {inputHasError(passwordInput) &&
-                  <FormInputError input={passwordInput} />
-                }
+                <div className="floating-label">
+                  <label
+                    className={inputHasError(passwordInput) && 'error'}
+                    htmlFor="passwordInput"
+                  >
+                    Password
+                  </label>
+                  <Popover isOpen={popoverOpen} preferPlace={'right'} body={<PasswordHint />}>
+                    <div></div>
+                  </Popover>
+                  <input
+                    {...passwordInput}
+                    type="password"
+                    name="password"
+                    id="passwordInput"
+                    className={inputHasError(passwordInput) && 'error'}
+                    aria-invalid={passwordInput.error !== null}
+                    onMouseEnter={this.onHoverPassword}
+                    onMouseLeave={this.onLeavePassword}
+                  ></input>
+                  {inputHasError(passwordInput) &&
+                    <FormInputError input={passwordInput} />
+                  }
+                </div>
               </div>
               <FormInputField
                 {...passwordConfirmationInput}
                 field={passwordConfirmationInput}
-                labelText="Password Confirmation"
+                labelText="Confirm"
                 inputType="password"
               />
               <FormButtonGroup />
@@ -159,7 +160,7 @@ class SignupForm extends Component {
           </Column>
         </Row>
         <FormFooter
-          url="login"
+          url="signin"
           text="Already have an account?"
         />
       </div>
