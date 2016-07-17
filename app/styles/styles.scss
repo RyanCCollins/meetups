@@ -447,3 +447,13 @@ ol.progtrckr li.progtrckr-done:hover:before {
   border-bottom: 0;
   color: black;
 }
+
+.full-height {
+  height: 100vh;
+}
+
+.perfectly-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

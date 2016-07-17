@@ -9,9 +9,20 @@ import {
 } from 'react-foundation';
 
 class AddMeetupPage extends Component {
+  constructor(props) {
+    super(props);
+    const {
+      location
+    } = props;
+    const step = location.query.step || 1;
+    this.state = {
+      step
+    };
+  }
   render() {
+    const { step } = this.state;
     return (
-      <Row className="relative">
+      <Row className="relative full-height perfectly-center">
         <BackButton />
         <Column
           isColumn
@@ -21,7 +32,7 @@ class AddMeetupPage extends Component {
           centerOnSmall
           className={styles.flexCenter}
         >
-          <AddMeetup />
+          <AddMeetup step={step} />
         </Column>
       </Row>
     );

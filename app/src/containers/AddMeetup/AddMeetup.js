@@ -175,7 +175,7 @@ class AddMeetup extends Component {
                 </Row>
               </div>
               <div className={styles.buttonWrapper}>
-                <Button size={'large'} disabled={submitting}>
+                <Button size={'large'} disabled={submitting} isExpanded>
                   Submit
                 </Button>
               </div>

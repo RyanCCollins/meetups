@@ -23,7 +23,7 @@ const MeetupPanel = ({
             <GoCalendar className={styles.iconStyle} />
           </span>
           <h4 className={styles.text}>No Meetups Yet...</h4>
-          <Link to="/meetups/new">
+          <Link to={{ pathname: 'meetups/new', query: { step: 1 } }}>
             <Button className={styles.button}>
               Create One
             </Button>
