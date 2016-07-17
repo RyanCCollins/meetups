@@ -21,6 +21,15 @@ body {
   overflow-x: hidden;
 }
 
+.form-input-group {
+  display: flex;
+}
+
+.form-input-group .form-group {
+  flex: 2;
+  margin-right: 20px;
+}
+
 input.error, textarea.error, select.error {
   margin-bottom: 0;
 }
@@ -456,4 +465,35 @@ ol.progtrckr li.progtrckr-done:hover:before {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.animate-flicker {
+  -webkit-animation: flickerAnimation 3s infinite;
+  -moz-animation: flickerAnimation 3s infinite;
+  -o-animation: flickerAnimation 3s infinite;
+  animation: flickerAnimation 3s infinite;
+}
+
+.red {
+  color: red;
 }

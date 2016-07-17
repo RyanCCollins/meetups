@@ -16,7 +16,17 @@ import {
   Column,
   Button
 } from 'react-foundation';
+import { SpeechButton } from 'components';
 
+
+const StepCounter = ({
+  currentStep,
+  steps
+}) => (
+  <div>
+
+  </div>
+);
 
 const defaultSelectOptions = [
   {
@@ -70,12 +80,19 @@ class AddMeetup extends Component {
       errors
     } = this.props;
     this.state = {
-      hasErrors: errors.length > 0
+      hasErrors: errors.length > 0,
+      speechInput: {
+        name: {
+          isRecording: false
+        }
+      }
     };
     this.formatAsDate = this.formatAsDate.bind(this);
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
+    this.handleSpeechRecognition = this.handleSpeechRecognition.bind(this);
+    this.handleSpeechResult = this.handleSpeechResult.bind(this);
   }
   formatAsDate(string) {
     return moment(string).format('DD/MM/YYYY');
@@ -89,7 +106,35 @@ class AddMeetup extends Component {
   handleSuggestSelect(value) {
     console.log(`Got a value ${value}`);
   }
+  handleSpeechResult(event) {
+    const { fields } = this.props;
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        console.log(`Setting value of nameInput to: ${event.results[i][0].transcript}`)
+        fields.nameInput.value += event.results[i][0].transcript;
+      }
+    }
+  }
+  handleSpeechRecognition(e) {
+    const { speechInput } = this.state;
+    const flipped = Object.assign({}, speechInput, {
+      name: {
+        isRecording: !speechInput.name.isRecording
+      }
+    });
+    this.setState({ speechInput: flipped });
+    e.preventDefault();
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.start();
+    recognition.onresult = this.handleSpeechResult;
+  }
   render() {
+    const {
+      speechInput
+    } = this.state;
     const {
       fields: {
         nameInput,
@@ -116,12 +161,18 @@ class AddMeetup extends Component {
             <form
               onSubmit={handleSubmit}
             >
-              <FormInputField
-                {...nameInput}
-                field={nameInput}
-                labelText="Name"
-                placeholder="The name of the event"
-              />
+              <div className="form-input-group">
+                <FormInputField
+                  {...nameInput}
+                  field={nameInput}
+                  labelText="Name"
+                  placeholder="The name of the event"
+                />
+                <SpeechButton
+                  isOn={speechInput.name.isRecording}
+                  onClick={this.handleSpeechRecognition}
+                />
+              </div>
               <SelectField
                 {...typeInput}
                 options={defaultSelectOptions}

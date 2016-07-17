@@ -22,6 +22,7 @@ import LocationInput from './LocationInput/LocationInput';
 import InfoPanel from './InfoPanel/InfoPanel';
 import Navbar from './Navbar/Navbar';
 import MeetupLogo from './MeetupLogo/MeetupLogo';
+import SpeechButton from './SpeechButton/SpeechButton';
 
 export {
   SectionHeader,
@@ -42,5 +43,6 @@ export {
   LocationInput,
   InfoPanel,
   Navbar,
-  MeetupLogo
+  MeetupLogo,
+  SpeechButton
 };
