@@ -53,10 +53,11 @@ class MeetupPage extends Component {
           <SectionHeader header="Meetups" />
           <MeetupPanel
             {...this.props}
+            meetups={meetups}
             onAddMeetup={this.handleAddMeetup}
           >
             <MeetupList
-              meetups={meetups.data || null}
+              meetups={meetups || null}
             />
           </MeetupPanel>
         </div>
@@ -68,7 +69,7 @@ class MeetupPage extends Component {
 MeetupPage.propTypes = {
   error: PropTypes.object,
   isFetching: PropTypes.bool.isRequired,
-  meetups: PropTypes.object.isRequired,
+  meetups: PropTypes.array.isRequired,
   getMeetupsList: PropTypes.func.isRequired,
   createNewMeetup: PropTypes.func.isRequired
 };
@@ -76,7 +77,7 @@ MeetupPage.propTypes = {
 const mapStateToProps = (state) => ({
   error: state.meetups.error,
   isFetching: state.meetups.isFetching,
-  meetups: state.meetups
+  meetups: state.meetups.data
 });
 
 const mapDispatchToProps = (dispatch) =>
