@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser } from '../../actions/user';
 import { toastr, actions as toastrActions  } from 'redux-toastr';
+import { BackButton } from 'components';
 
 import {
   SectionHeader,
@@ -51,11 +52,14 @@ class LoginPage extends React.Component {
     } = this.props;
     return (
       <LoadingIndicator isLoading={isFetching}>
-        <SectionHeader header="Log In" />
-        <LoginForm
-          {...this.props}
-          onSubmit={this.handleSubmit}
-        />
+        <div className="relative">
+          <BackButton />
+          <SectionHeader header="Log In" />
+          <LoginForm
+            {...this.props}
+            onSubmit={this.handleSubmit}
+          />
+        </div>
       </LoadingIndicator>
     );
   }

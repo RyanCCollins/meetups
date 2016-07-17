@@ -13,7 +13,6 @@ import { MeetupLogo } from 'components';
 import Headroom from 'react-headroom';
 import styles from './Navbar.module.scss';
 import cssModules from 'react-css-modules';
-import { slide } from 'react-burger-menu';
 
 const NotAuthenticated = () => (
   <Menu className={styles.menuCentered}>
@@ -55,7 +54,6 @@ const Navbar = ({
             :
               <NotAuthenticated />
             }
-            <slide right />
           </TopBarRight>
         </Column>
       </Row>

@@ -11,7 +11,7 @@ const MeetupList = ({
 }) => (
   <Row>
     <Column large={6} small={10} isColumn centerOnSmall>
-      <div></div>
+      <div>{meetups.map((event) => <li>{event}</li>)}</div>
     </Column>
   </Row>
 );

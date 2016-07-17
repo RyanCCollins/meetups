@@ -15,11 +15,12 @@ class GuestList extends Component {
     this.handleAddGuest = this.handleAddGuest.bind(this);
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this);
   }
-  handleAddGuest(guest) {
+  handleAddGuest() {
     const {
+      field,
       addGuestToList
     } = this.props;
-    addGuestToList(guest);
+    addGuestToList(field.value);
   }
   handleDeleteGuest(id) {
     const {
@@ -38,7 +39,10 @@ class GuestList extends Component {
           field={field}
           onAddGuest={this.handleAddGuest}
         />
-        <GuestsList guests={guests} onDeleteGuestItem={this.handleDeleteGuest} />
+        <GuestsList
+          guests={guests}
+          onDeleteGuestItem={this.handleDeleteGuest}
+        />
       </div>
     );
   }

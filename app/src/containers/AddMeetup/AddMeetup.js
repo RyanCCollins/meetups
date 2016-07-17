@@ -98,11 +98,8 @@ class AddMeetup extends Component {
         startDateInput,
         endDateInput,
         guestsInput,
-        locationInput,
-        locationLatInput,
-        locationLongInput
+        locationInput
       },
-      resetForm,
       handleSubmit,
       submitting,
       errors

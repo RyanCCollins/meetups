@@ -14,14 +14,18 @@ class GuestListInput extends React.Component {
     };
   }
   handleKeyPress(e) {
+    const {
+      onAddGuest
+    } = this.props;
     if (e.key.toLowerCase() == 'enter') {
       e.preventDefault();
-      this.handleSubmit();
+      onAddGuest();
     }
   }
   render() {
     const {
-      field
+      field,
+      onAddGuest
     } = this.props;
     return (
       <div className="form-group">
@@ -38,7 +42,7 @@ class GuestListInput extends React.Component {
             />
             <MdAdd
               className={styles.addButton}
-              onClick={this.handleSubmit}
+              onClick={onAddGuest}
             />
           </div>
         </div>

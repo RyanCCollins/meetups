@@ -6,6 +6,7 @@ import cssModules from 'react-css-modules';
 import { SignupForm } from '../../containers';
 import { signupUser } from '../../actions/user';
 import { toastr } from 'redux-toastr';
+import { BackButton } from 'components';
 
 import {
   SectionHeader,
@@ -56,6 +57,7 @@ class SignupPage extends Component {
     return (
       <LoadingIndicator isLoading={isFetching}>
         <div className={styles.container}>
+          <BackButton />
           <SectionHeader
             className={styles.blue}
             header="Sign Up Now"

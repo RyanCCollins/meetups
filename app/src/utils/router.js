@@ -20,6 +20,7 @@ const router = (
           <Route path="/signup" name="signup" component={Pages.SignupPage} />
           <Route path="/signin" name="signin" component={Pages.LoginPage} />
           <Route path="/meetups" name="MeetupsView" component={Pages.MeetupPage} />
+          <Route path="/meetups/new" name="addMeetup" component={Pages.AddMeetupPage} />
           <Route path="*" component={Pages.NotFoundPage} />
         </Route>
       </Router>
