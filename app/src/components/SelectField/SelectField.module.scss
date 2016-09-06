@@ -1,0 +1,9 @@
+.selectField {
+  margin-bottom: 20px !important;
+  span:focus {
+    outline: 0;
+  }
+  select:focus {
+    outline: 0;
+  }
+}

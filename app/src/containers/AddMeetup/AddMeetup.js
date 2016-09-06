@@ -17,7 +17,8 @@ import {
   Button
 } from 'react-foundation';
 import { SpeechButton } from 'components';
-
+import DateTime from 'grommet/components/DateTime';
+import FormField from 'grommet/components/FormField';
 
 const StepCounter = ({
   currentStep,
@@ -195,33 +196,24 @@ class AddMeetup extends Component {
               <div className="form-group">
                 <Row>
                   <Column large={6}>
-                    <label htmlFor="start-date-input">Start Date</label>
-                    <DateField
-                      {...startDateInput}
-                      className={styles.dateInput}
-                      id="start-date-input"
-                      forceValidDate
-                      defaultValue={"2016-05-30 15:23:34"}
-                      dateFormat="YYYY-MM-DD HH:mm:ss"
-                    >
-                      <TransitionView>
-                        <Calendar style={{ padding: 10 }} />
-                      </TransitionView>
-                    </DateField>
+                    <FormField>
+                      <label htmlFor="start-date-input">Start Date</label>
+                      <DateTime
+                        id="start-date-input"
+                        name="Start Date Input"
+                        {...startDateInput}
+                      />
+                    </FormField>
                   </Column>
                   <Column large={6}>
-                    <label htmlFor="end-date-input">End Date</label>
-                    <DateField
-                      {...endDateInput}
-                      className={styles.dateInput}
-                      forceValidDate
-                      defaultValue={"2016-05-30 15:23:34"}
-                      dateFormat="YYYY-MM-DD HH:mm:ss"
-                    >
-                      <TransitionView>
-                        <Calendar style={{ padding: 10 }} />
-                      </TransitionView>
-                    </DateField>
+                    <FormField>
+                      <label htmlFor="end-date-input">End Date</label>
+                      <DateTime
+                        id="end-date-input"
+                        name="End Date Input"
+                        {...endDateInput}
+                      />
+                    </FormField>
                   </Column>
                 </Row>
               </div>

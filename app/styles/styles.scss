@@ -9,6 +9,8 @@
 @include foundation-flex-classes;
 @include foundation-everything;
 
+@import './grommet.scss';
+
 // Global Styles defined here.
 $primary-color: rgba(0, 216, 255, .9);
 $off-white: #E9EAEC;
