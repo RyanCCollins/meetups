@@ -1,3 +1,6 @@
+# Deprecated
+Note this repo has been deprecated.  The new repo is available [here](https://github.com/RyanCCollins/meetup-event-planner).  This repo will be preserved for history's sake.
+
 # Meetup Event Planner
 Application created to make scheduling of meetups easy.
 
